@@ -10,6 +10,7 @@ export default ({
   onChange = () => {},
   highlight = (code) => code.replace(/[&<>"'`/=]/g, (char) => `<span>${char}</span>`),
   dynamicHighlight = true,
+  readonly = false,
   trapTab = false,
   tabWidth = 2,
   showLineNumbers = true,
@@ -85,7 +86,7 @@ export default ({
 
   return (
     <div
-      className="ez-editor"
+      className="easy-editor"
       style={{
         border,
       }}
@@ -98,7 +99,7 @@ export default ({
       />
       <div className="editor-container">
         <textarea
-          className="ez-editor-input"
+          className="easy-editor-input"
           wrap="off"
           autoCapitalize="off"
           autoComplete="off"
@@ -113,6 +114,7 @@ export default ({
             caretColor: caretColor,
           }}
           value={code}
+          disabled={readonly}
         />
         <EasyEditorDisplay
           ref={displayRef}

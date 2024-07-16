@@ -17,14 +17,14 @@ export default forwardRef(
     return (
       <div
         ref={ref as RefObject<HTMLDivElement>}
-        className="ez-editor-display"
+        className="easy-editor-display"
         style={{
           fontSize,
           backgroundColor,
         }}
       >
         <pre
-          className="ez-editor-display-pre"
+          className="easy-editor-display-pre"
           style={{
             width: codeWidth,
             fontSize,

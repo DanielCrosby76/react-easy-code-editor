@@ -4,6 +4,6 @@ import { EasyEditor } from "./lib";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <EasyEditor />
+    <EasyEditor readonly/>
   </React.StrictMode>
 );

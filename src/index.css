@@ -1,4 +1,4 @@
-.ez-editor {
+.easy-editor {
   /* prevents external styling messing with things*/
   all: initial;
   box-sizing: border-box;
@@ -14,7 +14,7 @@
   flex: 1;
 }
 
-.ez-editor-input {
+.easy-editor-input {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -31,7 +31,7 @@
   line-height: 1;
 }
 
-.ez-editor-display {
+.easy-editor-display {
   position: absolute;
   outline: none;
   box-sizing: border-box;
@@ -43,14 +43,14 @@
   line-height: 1;
 }
 
-.ez-editor-display-pre {
+.easy-editor-display-pre {
   box-sizing: border-box;
   margin: 0px;
   padding: 5px;
   line-height: 1;
 }
 
-.ez-editor-line-numbers {
+.easy-editor-line-numbers {
   box-sizing: border-box;
   overflow: hidden;
   text-align: right;

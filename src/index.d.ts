@@ -37,6 +37,7 @@ export type EasyEditorProps = {
   onChange?: (code: string) => void;
   highlight?: (code: string) => string;
   dynamicHighlight?: boolean;
+  readonly?: boolean;
   trapTab?: boolean;
   tabWidth?: number;
   showLineNumbers?: boolean;

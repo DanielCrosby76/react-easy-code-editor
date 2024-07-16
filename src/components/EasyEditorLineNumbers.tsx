@@ -6,7 +6,7 @@ export default memo(
     if (!showLineNumbers) return;
     return (
       <pre
-        className="ez-editor-line-numbers"
+        className="easy-editor-line-numbers"
         ref={ref as RefObject<HTMLPreElement>}
         style={{
           fontSize: theme.fontSize,
