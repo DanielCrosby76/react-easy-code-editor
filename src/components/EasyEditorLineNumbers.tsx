@@ -14,6 +14,7 @@ export default memo(
           backgroundColor: theme.numbersBackgroundColor,
           color: theme.numbersColor,
         }}
+        aria-hidden={true}
       >
         {Array.from({ length: lineCount }, (_, i) => i + 1).join("\n") + "\n\n"}
       </pre>

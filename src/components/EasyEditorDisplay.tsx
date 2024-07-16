@@ -22,6 +22,7 @@ export default forwardRef(
           fontSize,
           backgroundColor,
         }}
+        aria-hidden={true}
       >
         <pre
           className="easy-editor-display-pre"

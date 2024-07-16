@@ -18,19 +18,19 @@ npm install react-easy-code-editor
 ```jsx
 import { EasyEditor } from "react-easy-code-editor";
 
-// A third party library like highlight.js is not needed for syntax highlighing
+// A third party library is not needed for syntax highlighing
 // A custom highlight function can be created instead.
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
-import "highlight.js/styles/default.css"; // highlight.js offers other themes
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css"; // prismjs offers other themes
 
-hljs.registerLanguage("javascript", javascript);
+// If you prefer highlight.js
+// import hljs from "highlight.js/lib/core";
+// import javascript from "highlight.js/lib/languages/javascript";
+// import "highlight.js/styles/default.css"; // highlight.js offers other themes
 
-// If you prefer prismjs
-// import { highlight, languages } from "prismjs/components/prism-core";
-// import "prismjs/components/prism-clike";
-// import "prismjs/components/prism-javascript";
-// import "prismjs/themes/prism.css"; // prismjs offers other themes
+// hljs.registerLanguage("javascript", javascript);
 
 const App = () => {
   return (
@@ -38,8 +38,8 @@ const App = () => {
     <div style={{ height: 600 }}>
       <EasyEditor
         // Styling that modifies text sizing should be avoided within the syntax highlight function
-        highlight={(code) => hljs.highlight(code, { language: "javascript" }).value}
-        // highlight={(code) => highlight(code, languages.js)}
+        highlight={(code) => highlight(code, languages.js)}
+        // highlight={(code) => hljs.highlight(code, { language: "javascript" }).value}
         // Starting value to display in the editor
         initialValue={`console.log("Hello, World!");`}
         // Handle updated code
@@ -92,7 +92,9 @@ const myTheme = {
 };
 ```
 
-#### Planned Features
+#### Planned
 
+- Tests
 - Automatic indent on new lines
 - Wrap selected code with: [] () <> {} "" '' ``
+- IOS Support/Testing

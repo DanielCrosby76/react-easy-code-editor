@@ -115,6 +115,8 @@ export default ({
           }}
           value={code}
           disabled={readonly}
+          aria-label="React Easy Code Editor"
+          aria-readonly={readonly}
         />
         <EasyEditorDisplay
           ref={displayRef}
