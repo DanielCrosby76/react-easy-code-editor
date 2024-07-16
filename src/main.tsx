@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-
-const App = () => {
-  return <>test</>;
-};
+import { EasyEditor } from "./lib";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <EasyEditor />
   </React.StrictMode>
 );
