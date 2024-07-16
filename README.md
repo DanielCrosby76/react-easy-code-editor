@@ -54,9 +54,7 @@ export default App;
 
 More examples comming soon.
 
-### Library Exports
-
-#### `<EasyEditor />`
+### `<EasyEditor />`
 
 All props in this component are optional.
 
@@ -72,10 +70,27 @@ All props in this component are optional.
 | showLineNumbers  | boolean                  | true                      | Show or hide line numbers.                                                                                                                                                                                           |
 | theme            | EasyEditor.Theme         | EasyEditor.DefaultLight   | Simple styling for the editor using a theme object.                                                                                                                                                                  |
 
-#### `Themes`
+### Theming
 
-- DefaultLight
-- DefaultDark
+```js
+// Import a theme of choice
+import { DefaultDark } from "react-easy-code-editor";
+
+// Apply theme to code editor
+<EasyEditor theme={DefaultDark} />;
+
+// Alternativly define a custom theme with css styles
+const myTheme = {
+  border: "1px solid black",
+  backgroundColor: "white",
+  color: "black",
+  numbersBackgroundColor: "#f5f5f5",
+  numbersColor: "#6c6c6c",
+  numbersBorder: "1px solid #ddd",
+  caretColor: "black",
+  fontSize: 16,
+};
+```
 
 #### Planned Features
 
