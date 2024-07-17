@@ -88,6 +88,7 @@ const myTheme = {
   numbersColor: "#6c6c6c",
   numbersBorder: "1px solid #ddd",
   caretColor: "black",
+  font: "inherit",
   fontSize: 16,
 };
 ```

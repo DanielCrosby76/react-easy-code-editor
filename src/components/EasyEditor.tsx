@@ -4,21 +4,24 @@ import useIndent from "../hooks/useIndent";
 import DefaultLight from "../themes/DefaultLight";
 import EasyLineNumbers from "./EasyEditorLineNumbers";
 import { EasyEditorProps } from "../index";
+import useCode from "../hooks/useCode";
 
-export default ({
-  initialValue = "",
-  onChange = () => {},
-  highlight = (code) => code.replace(/[&<>"'`/=]/g, (char) => `<span>${char}</span>`),
-  dynamicHighlight = true,
-  readonly = false,
-  trapTab = false,
-  tabWidth = 2,
-  showLineNumbers = true,
-  theme = DefaultLight,
-}: EasyEditorProps) => {
-  const [code, setCode] = useState<string>(initialValue);
+export default (props: EasyEditorProps) => {
+  const {
+    value,
+    onChange = () => {},
+    placeholder,
+    highlight = (code) => code.replace(/[&<>"'`/=]/g, (char) => `<span>${char}</span>`),
+    dynamicHighlight = true,
+    readonly = false,
+    trapTab = false,
+    tabWidth = 2,
+    showLineNumbers = true,
+    theme = DefaultLight,
+  } = props;
+  const [code, setCode] = useCode(value, onChange);
   const [visibleLine, setVisibleLine] = useState<number>(0);
-  const [lineCount, setLineCount] = useState<number>(initialValue.split("\n").length);
+  const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const codeRef = useRef<string>("");
   const lineNumbersRef = useRef<HTMLPreElement>(null);
@@ -32,10 +35,9 @@ export default ({
     const cursorPosition = e.target.selectionStart;
     const codeBeforeCursor = code.substring(0, cursorPosition);
     const editedLine = (codeBeforeCursor.match(/\n/g) || []).length;
-    setCode(code);
     setLineCount((code.match(/\n/g) || []).length + 1);
     setVisibleLine(editedLine);
-    onChange(code);
+    setCode(code);
   }, []);
 
   const handleScroll = useCallback(
@@ -118,6 +120,7 @@ export default ({
           disabled={readonly}
           aria-label="React Easy Code Editor"
           aria-readonly={readonly}
+          placeholder={placeholder}
         />
         <EasyEditorDisplay
           ref={displayRef}

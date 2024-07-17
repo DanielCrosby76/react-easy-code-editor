@@ -34,8 +34,9 @@ export type EasyEditorDisplayProps = {
 export const EasyEditorDisplay: (props: EasyEditorDisplayProps) => JSX.Element;
 
 export type EasyEditorProps = {
-  initialValue?: string;
+  value?: string;
   onChange?: (code: string) => void;
+  placeholder?: string;
   highlight?: (code: string) => string;
   dynamicHighlight?: boolean;
   readonly?: boolean;
