@@ -24,7 +24,7 @@ export default ({
   const lineNumbersRef = useRef<HTMLPreElement>(null);
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
-  const { fontSize, border, caretColor } = theme;
+  const { border, caretColor, font, fontSize } = theme;
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     const code = e.target.value;
@@ -52,6 +52,7 @@ export default ({
         left: scrollLeft,
         behavior: "instant",
       });
+      console.log(scrollTop / fontSize);
       setVisibleLine(Math.floor(scrollTop / fontSize));
     },
     [lineCount, fontSize]
@@ -89,6 +90,9 @@ export default ({
       className="easy-editor"
       style={{
         border,
+        font,
+        fontSize,
+        lineHeight: 1,
       }}
     >
       <EasyLineNumbers
@@ -109,10 +113,7 @@ export default ({
           onScroll={handleScroll}
           onKeyDown={trapTab ? handleKeyDown : undefined}
           ref={inputRef}
-          style={{
-            fontSize,
-            caretColor: caretColor,
-          }}
+          style={{ caretColor: caretColor }}
           value={code}
           disabled={readonly}
           aria-label="React Easy Code Editor"
@@ -124,6 +125,7 @@ export default ({
           highlight={highlight}
           visibleLine={visibleLine}
           visibleLineCount={visibleLineCount}
+          fontSize={fontSize}
           theme={theme}
         />
       </div>

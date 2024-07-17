@@ -8,6 +8,7 @@ const DefaultDark: Theme = {
   numbersColor: "#5c5855",
   numbersBorder: "1px solid #5c5855",
   caretColor: "#f5f5f5",
+  font: "inherit",
   fontSize: 16,
 };
 

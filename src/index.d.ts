@@ -6,7 +6,7 @@ export type Theme = {
   numbersColor: string;
   numbersBorder: string;
   caretColor: string;
-  // TODO add support for fonts
+  font: string;
   fontSize: number;
 };
 
@@ -27,6 +27,7 @@ export type EasyEditorDisplayProps = {
   highlight: (code: string) => string;
   visibleLine: number;
   visibleLineCount: number;
+  fontSize: number;
   theme: Theme;
 };
 
