@@ -11,7 +11,7 @@ npm install react-easy-code-editor
 - Line numbering
 - Themeing
 - Dynamic Syntax highlighting via custom function or third party library
-- Does not wrap code lines i.e horizonaltal scrolling
+- Does not wrap code lines i.e horizontal scrolling
 
 ### Basic Usage
 
@@ -83,6 +83,7 @@ import { DefaultDark } from "react-easy-code-editor";
 <EasyEditor theme={DefaultDark} />;
 
 // Alternativly define a custom theme with css styles
+// All suported/required styles are shown here
 const myTheme = {
   border: "1px solid black",
   backgroundColor: "white",
