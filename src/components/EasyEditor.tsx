@@ -2,7 +2,7 @@ import { ChangeEvent, UIEvent, useCallback, KeyboardEvent, useRef, useState } fr
 import EasyEditorDisplay from "./EasyEditorDisplay";
 import useIndent from "../hooks/useIndent";
 import DefaultLight from "../themes/DefaultLight";
-import EasyLineNumbers from "./EasyEditorLineNumbers";
+import EasyEditorLineNumbers from "./EasyEditorLineNumbers";
 import { EasyEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 
@@ -97,7 +97,7 @@ export default (props: EasyEditorProps) => {
         lineHeight: 1,
       }}
     >
-      <EasyLineNumbers
+      <EasyEditorLineNumbers
         showLineNumbers={showLineNumbers}
         lineCount={lineCount}
         theme={theme}
