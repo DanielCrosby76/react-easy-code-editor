@@ -14,15 +14,15 @@ export const DefaultLight: Theme;
 
 export const DefaultDark: Theme;
 
-export type EasyEditorLineNumbersProps = {
+export type EditorLineNumbersProps = {
   lineCount: number;
   showLineNumbers: boolean;
   theme: Theme;
 };
 
-export const EasyEditorLineNumbers: (props: EasyEditorLineNumbersProps) => JSX.Element;
+export const EditorLineNumbers: (props: EditorLineNumbersProps) => JSX.Element;
 
-export type EasyEditorDisplayProps = {
+export type EditorDisplayProps = {
   code: string;
   highlight: (code: string) => string;
   visibleLine: number;
@@ -31,9 +31,9 @@ export type EasyEditorDisplayProps = {
   theme: Theme;
 };
 
-export const EasyEditorDisplay: (props: EasyEditorDisplayProps) => JSX.Element;
+export const EditorDisplay: (props: EditorDisplayProps) => JSX.Element;
 
-export type EasyEditorProps = {
+export type EasyCodeEditorProps = {
   value?: string;
   onChange?: (code: string) => void;
   placeholder?: string;
@@ -46,4 +46,4 @@ export type EasyEditorProps = {
   theme?: Theme;
 };
 
-export const EasyEditor: (props: EasyEditorProps) => JSX.Element;
+export const EasyCodeEditor: (props: EasyCodeEditorProps) => JSX.Element;

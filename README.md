@@ -17,10 +17,10 @@ npm install react-easy-code-editor
 
 ```jsx
 import { useState } from "react";
-import { EasyEditor, DefaultLight } from "react-easy-code-editor";
+import { EasyCodeEditor } from "react-easy-code-editor";
 
 // A third party library is not needed for syntax highlighing
-// A custom highlight function can be created instead.
+// A custom highlight function can be created instead
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
@@ -40,7 +40,7 @@ const App = () => {
   return (
     // The editor will fill the width/height of its parent
     <div style={{ height: 500 }}>
-      <EasyEditor
+      <EasyCodeEditor
         // The editor will manage its own state when no value is passed in
         value={code}
         // Handle updated code
@@ -56,22 +56,22 @@ const App = () => {
 export default App;
 ```
 
-### `<EasyEditor />`
+### `<EasyCodeEditor />`
 
 All props are optional.
 
-| Prop Name        | Type                     | Default Value             | Description                                                                                                                                                                                                                    |
-| ---------------- | ------------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| value            | string                   | undefined                 | The value(code) to display in the editor. The editor will manage it's own state if no value is passed in.                                                                                                                      |
-| onChange         | (code: string) => void   | (code) => {}              | Listen to any value changes in the editor.                                                                                                                                                                                     |
-| highlight        | (code: string) => string | (code) => htmlEscapedCode | Function to handle syntax highlighting. Html characters should be escaped if a custom function is used.                                                                                                                        |
-| placeholder      | string                   | undefined                 | Placeholder to display when no code is present in the editor.                                                                                                                                                                  |
-| dynamicHighlight | boolean                  | true                      | Enable or disable highlighting the currently visible range of lines in the editor. Disabling may cause degraded performace on larger documents. If the parent element does not have a set height then this should be disabled. |
-| readOnly         | boolean                  | false                     | Disables the editor allowing only viewing the current value.                                                                                                                                                                   |
-| trapTab          | boolean                  | false                     | Trap the tab character in the editor for indentation with the tab key. You should avoid doing this for accessibility reasons.                                                                                                  |
-| tabWidth         | number                   | 2                         | Determines the number of spaces to be inserted on tab key press. Ignored if trapTab is false.                                                                                                                                  |
-| showLineNumbers  | boolean                  | true                      | Show or hide line numbers.                                                                                                                                                                                                     |
-| theme            | EasyEditor.Theme         | EasyEditor.DefaultLight   | Simple styling for the editor using a theme object.                                                                                                                                                                            |
+| Prop Name        | Type                     | Default Value               | Description                                                                                                                                                                                                                    |
+| ---------------- | ------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| value            | string                   | undefined                   | The value(code) to display in the editor. The editor will manage it's own state if no value is passed in.                                                                                                                      |
+| onChange         | (code: string) => void   | (code) => {}                | Listen to any value changes in the editor.                                                                                                                                                                                     |
+| highlight        | (code: string) => string | (code) => htmlEscapedCode   | Function to handle syntax highlighting. Html characters should be escaped if a custom function is used.                                                                                                                        |
+| placeholder      | string                   | undefined                   | Placeholder to display when no code is present in the editor.                                                                                                                                                                  |
+| dynamicHighlight | boolean                  | true                        | Enable or disable highlighting the currently visible range of lines in the editor. Disabling may cause degraded performace on larger documents. If the parent element does not have a set height then this should be disabled. |
+| readOnly         | boolean                  | false                       | Disables the editor allowing only viewing the current value.                                                                                                                                                                   |
+| trapTab          | boolean                  | false                       | Trap the tab character in the editor for indentation with the tab key. You should avoid doing this for accessibility reasons.                                                                                                  |
+| tabWidth         | number                   | 2                           | Determines the number of spaces to be inserted on tab key press. Ignored if trapTab is false.                                                                                                                                  |
+| showLineNumbers  | boolean                  | true                        | Show or hide line numbers.                                                                                                                                                                                                     |
+| theme            | EasyCodeEditor.Theme     | EasyCodeEditor.DefaultLight | Simple styling for the editor using a theme object.                                                                                                                                                                            |
 
 ### Theming
 
@@ -80,7 +80,7 @@ All props are optional.
 import { DefaultDark } from "react-easy-code-editor";
 
 // Apply theme to code editor
-<EasyEditor theme={DefaultDark} />;
+<EasyCodeEditor theme={DefaultDark} />;
 
 // Alternativly define a custom theme with css styles
 // All suported/required styles are shown here

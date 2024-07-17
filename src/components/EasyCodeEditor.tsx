@@ -1,12 +1,12 @@
 import { ChangeEvent, UIEvent, useCallback, KeyboardEvent, useRef, useState } from "react";
-import EasyEditorDisplay from "./EasyEditorDisplay";
+import EditorDisplay from "./EditorDisplay";
 import useIndent from "../hooks/useIndent";
 import DefaultLight from "../themes/DefaultLight";
-import EasyEditorLineNumbers from "./EasyEditorLineNumbers";
-import { EasyEditorProps } from "../index";
+import EditorLineNumbers from "./EditorLineNumbers";
+import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 
-export default (props: EasyEditorProps) => {
+export default (props: EasyCodeEditorProps) => {
   const {
     value,
     onChange = () => {},
@@ -97,7 +97,7 @@ export default (props: EasyEditorProps) => {
         lineHeight: 1,
       }}
     >
-      <EasyEditorLineNumbers
+      <EditorLineNumbers
         showLineNumbers={showLineNumbers}
         lineCount={lineCount}
         theme={theme}
@@ -122,7 +122,7 @@ export default (props: EasyEditorProps) => {
           aria-readonly={readonly}
           placeholder={placeholder}
         />
-        <EasyEditorDisplay
+        <EditorDisplay
           ref={displayRef}
           code={code}
           highlight={highlight}

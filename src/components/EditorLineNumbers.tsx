@@ -1,8 +1,8 @@
 import { forwardRef, RefObject, memo } from "react";
-import { EasyEditorLineNumbersProps } from "../index";
+import { EditorLineNumbersProps } from "../index";
 
 export default memo(
-  forwardRef(({ lineCount, showLineNumbers, theme }: EasyEditorLineNumbersProps, ref) => {
+  forwardRef(({ lineCount, showLineNumbers, theme }: EditorLineNumbersProps, ref) => {
     if (!showLineNumbers) return;
     return (
       <pre

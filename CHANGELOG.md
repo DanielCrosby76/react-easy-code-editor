@@ -11,5 +11,5 @@ First beta release with most primary functionality.
 
 ### Added
 
-- Core code editor component
-- 2 Default themes light and dark
+- Core code editor component.
+- 2 Default themes, light and dark.

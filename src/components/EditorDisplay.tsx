@@ -1,8 +1,8 @@
 import { forwardRef, RefObject, useCallback } from "react";
 import useHighlightRange from "../hooks/useHighlightRange";
-import { EasyEditorDisplayProps } from "../index";
+import { EditorDisplayProps } from "../index";
 
-export default forwardRef((props: EasyEditorDisplayProps, ref) => {
+export default forwardRef((props: EditorDisplayProps, ref) => {
   const { code, highlight, visibleLine, visibleLineCount, fontSize, theme } = props;
   const highlightRange = useHighlightRange(highlight, visibleLine, visibleLineCount);
   const reducer = useCallback((longest: string, current: string) => {
