@@ -47,6 +47,7 @@ const App = () => {
         onChange={(code) => setCode(code)}
         // Handle syntax highlighting
         highlight={(code) => highlight(code, languages.js)}
+        // For highlight.js
         // highlight={(code) => hljs.highlight(code, { language: "javascript" }).value}
       />
     </div>

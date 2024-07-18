@@ -23,7 +23,6 @@ export default (props: EasyCodeEditorProps) => {
   const [visibleLine, setVisibleLine] = useState<number>(0);
   const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const codeRef = useRef<string>("");
   const lineNumbersRef = useRef<HTMLPreElement>(null);
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
@@ -31,7 +30,6 @@ export default (props: EasyCodeEditorProps) => {
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     const code = e.target.value;
-    codeRef.current = code;
     const cursorPosition = e.target.selectionStart;
     const codeBeforeCursor = code.substring(0, cursorPosition);
     const editedLine = (codeBeforeCursor.match(/\n/g) || []).length;
@@ -54,7 +52,6 @@ export default (props: EasyCodeEditorProps) => {
         left: scrollLeft,
         behavior: "instant",
       });
-      console.log(scrollTop / fontSize);
       setVisibleLine(Math.floor(scrollTop / fontSize));
     },
     [lineCount, fontSize]
