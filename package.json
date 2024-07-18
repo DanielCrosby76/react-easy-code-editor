@@ -1,6 +1,11 @@
 {
   "name": "react-easy-code-editor",
   "version": "1.0.0-beta.1",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel Crosby",
+    "email": "danielcrosby844@gmail.com"
+  },
   "type": "module",
   "files": [
     "dist"
@@ -40,6 +45,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielCrosby76/react-easy-code-editor"
-  }
+    "url": "git+https://github.com/DanielCrosby76/react-easy-code-editor.git"
+  },
+  "keywords": [
+    "react",
+    "code",
+    "editor"
+  ]
 }
