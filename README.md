@@ -8,10 +8,10 @@ npm install react-easy-code-editor
 
 ### Features:
 
-- Line numbering
-- Themeing
-- Dynamic Syntax highlighting via custom function or third party library
-- Does not wrap code lines i.e horizontal scrolling
+- 🔢 Line numbering
+- 🌒 Themeing
+- ✨ Dynamic Syntax highlighting via custom function or third party library
+- 📜 Does not wrap code lines i.e horizontal scrolling
 
 ### Basic Usage
 
