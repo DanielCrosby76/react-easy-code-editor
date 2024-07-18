@@ -31,7 +31,7 @@ const FormEditor = () => {
       />
       <EasyCodeEditor
         placeholder="Enter code to submit..."
-        code={code}
+        value={code}
         onChange={handleEditorChange}
       />
       <button type="submit">Submit</button>

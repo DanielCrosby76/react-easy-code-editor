@@ -8,7 +8,7 @@ import useCode from "../hooks/useCode";
 
 export default (props: EasyCodeEditorProps) => {
   const {
-    value,
+    value = undefined,
     onChange = () => {},
     placeholder,
     highlight = (code) => code.replace(/[&<>"'`/=]/g, (char) => `<span>${char}</span>`),
