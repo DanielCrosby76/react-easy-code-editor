@@ -9,6 +9,6 @@ export default defineConfig({
     include: ["prismjs"],
   },
   build: {
-    outDir: "homepage",
+    outDir: "docs",
   },
 });
