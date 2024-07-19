@@ -7,6 +7,7 @@ export default (
 ): ((lines: string[]) => string) => {
   const highlightRange = useCallback(
     (lines: string[]): string => {
+      // TODO: cache(useMemo) highlighting and replace range
       if (visibleLineCount < 0) return highlight(lines.join("\n") + "\n\n");
       const start = Math.max(visibleLine - Math.floor(visibleLineCount), 0);
       const end = Math.min(visibleLine + Math.ceil(visibleLineCount), lines.length);

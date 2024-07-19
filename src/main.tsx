@@ -28,15 +28,15 @@ const demoHtml = `<style>
 .link {
   color: #61DBFB;
 }
-#github:hover, #npm:hover {
-  background-color: #2a2a2e;
+.link:hover {
   color: rgb(188, 188, 188);
 }
 </style>
 <img id="react-icon" src="./react.svg" alt="react"></img>
-<h1 id="heading">
+<h1>
   React Easy Code Editor
 </h1>
+<a class="link" href="https://www.npmjs.com/package/react-easy-code-editor">v1.0.0</a>
 <h3 id="description">
   An easy to use react based code editor with syntax highlighting.
 </h3>

@@ -1,4 +1,12 @@
-import { ChangeEvent, UIEvent, useCallback, KeyboardEvent, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  UIEvent,
+  useCallback,
+  KeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import EditorDisplay from "./EditorDisplay";
 import useIndent from "../hooks/useIndent";
 import DefaultLight from "../themes/DefaultLight";
@@ -54,7 +62,9 @@ export default (props: EasyCodeEditorProps) => {
         left: scrollLeft,
         behavior: "instant",
       });
-      setVisibleLine(Math.floor(scrollTop / fontSize) + Math.ceil(visibleLineCount / 2));
+      const topVisibleLine = Math.floor(scrollTop / fontSize);
+      const halfCount = Math.ceil(visibleLineCount / 2);
+      setVisibleLine(topVisibleLine + halfCount);
     },
     [fontSize, visibleLineCount]
   );
@@ -79,6 +89,20 @@ export default (props: EasyCodeEditorProps) => {
     },
     [indent]
   );
+
+  useEffect(() => {
+    const resize = () => {
+      if (!inputRef.current) return;
+      const visibleLineCount = Math.ceil(inputRef.current.clientHeight / fontSize);
+      const topVisibleLine = Math.floor(inputRef.current.scrollTop / fontSize);
+      const halfCount = Math.ceil(visibleLineCount / 2);
+      setVisibleLine(topVisibleLine + halfCount);
+    };
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
 
   return (
     <div

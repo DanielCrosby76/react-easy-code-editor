@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Transitioning from undefined code prop and back
 - On scroll down highlighting incorrect range
+- Highlighting on page resize
 
 ## [1.0.0-rc.1] - 2024-07-18
 
