@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Live code demo on stackblitz
 - Homepage
 
+## Fixed
+
+- Transitioning from undefined code prop and back
+- On scroll down highlighting incorrect range
+
 ## [1.0.0-rc.1] - 2024-07-18
 
 First release candidate with most primary functionality.

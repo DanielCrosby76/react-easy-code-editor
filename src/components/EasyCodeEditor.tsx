@@ -27,6 +27,8 @@ export default (props: EasyCodeEditorProps) => {
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
   const { border, caretColor, font, fontSize } = theme;
+  const visibleLineCount =
+    dynamicHighlight && inputRef.current ? Math.ceil(inputRef.current.clientHeight / fontSize) : -1;
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     const code = e.target.value;
@@ -52,9 +54,9 @@ export default (props: EasyCodeEditorProps) => {
         left: scrollLeft,
         behavior: "instant",
       });
-      setVisibleLine(Math.floor(scrollTop / fontSize));
+      setVisibleLine(Math.floor(scrollTop / fontSize) + Math.ceil(visibleLineCount / 2));
     },
-    [lineCount, fontSize]
+    [fontSize, visibleLineCount]
   );
 
   const handleKeyDown = useCallback(
@@ -77,12 +79,6 @@ export default (props: EasyCodeEditorProps) => {
     },
     [indent]
   );
-
-  const visibleLineCount = dynamicHighlight
-    ? inputRef.current
-      ? Math.ceil(inputRef.current.clientHeight / fontSize) * 2
-      : lineCount
-    : -1;
 
   return (
     <div

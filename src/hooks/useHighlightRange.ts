@@ -8,9 +8,8 @@ export default (
   const highlightRange = useCallback(
     (lines: string[]): string => {
       if (visibleLineCount < 0) return highlight(lines.join("\n") + "\n\n");
-      const halfRange = visibleLineCount / 2;
-      const start = Math.max(visibleLine - Math.floor(halfRange), 0);
-      const end = Math.min(visibleLine + Math.ceil(halfRange), lines.length);
+      const start = Math.max(visibleLine - Math.floor(visibleLineCount), 0);
+      const end = Math.min(visibleLine + Math.ceil(visibleLineCount), lines.length);
       const highlightSlice = lines.slice(start, end);
       const highlightedRange = highlight!(highlightSlice.join("\n"));
       const highlghtedCode = [
