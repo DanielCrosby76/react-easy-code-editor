@@ -2,7 +2,7 @@
 
 React easy code editor is a small and simple library that aims to provide the user a much improved experience and increased performance over the popular libraries [react-simple-code-editor](https://github.com/react-simple-code-editor/react-simple-code-editor) and [react-textarea-code-editor](https://github.com/uiwjs/react-textarea-code-editor) while maintaining a small build size and concise code base. This library is for those who value usability and simplicity but do not need somthing fully featured like the codemirror or monaco editors.
 
-Check out the demo [here](https://stackblitz.com/edit/react-easy-code-editor) or install the package yourself:
+Check out the live code demo [here](https://stackblitz.com/edit/react-easy-code-editor) or install the package yourself:
 
 ```sh
 npm install react-easy-code-editor
@@ -13,7 +13,7 @@ npm install react-easy-code-editor
 - 🔢 Line numbering
 - 🌒 Themeing
 - ✨ Dynamic Syntax highlighting via custom function or third party library
-- 📜 Does not wrap code lines i.e horizontal scrolling
+- 📜 Does not wrap code onto new lines
 
 ### Basic Usage
 

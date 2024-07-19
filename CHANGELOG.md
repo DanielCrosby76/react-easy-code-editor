@@ -10,11 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 
 - Examples folder
-- Demo on stackblitz
+- Live code demo on stackblitz
+- Homepage
 
 ## [1.0.0-rc.1] - 2024-07-18
 
-First beta release with most primary functionality.
+First release candidate with most primary functionality.
 
 ### Added
 
