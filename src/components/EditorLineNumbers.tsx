@@ -1,8 +1,15 @@
 import { forwardRef, RefObject, memo } from "react";
-import { EditorLineNumbersProps } from "../index";
+import { Theme } from "../index";
+
+type EditorLineNumbersProps = {
+  lineCount: number;
+  showLineNumbers: boolean;
+  theme: Theme;
+};
 
 export default memo(
-  forwardRef(({ lineCount, showLineNumbers, theme }: EditorLineNumbersProps, ref) => {
+  forwardRef((props: EditorLineNumbersProps, ref) => {
+    const { lineCount, showLineNumbers, theme } = props;
     if (!showLineNumbers) return;
     return (
       <pre

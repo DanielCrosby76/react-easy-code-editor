@@ -1,8 +1,18 @@
 import { forwardRef, RefObject, useMemo } from "react";
 import useHighlightRange from "../hooks/useHighlightRange";
-import { EditorDisplayProps } from "../index";
+import { Theme } from "../index";
 
-export default forwardRef((props: EditorDisplayProps, ref) => {
+type EditorDisplayProps = {
+  code: string;
+  highlight: (code: string) => string;
+  visibleLine: number;
+  visibleLineCount: number;
+  fontSize: number;
+  scrollWidth: number;
+  theme: Theme;
+};
+
+export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
   const { code, highlight, visibleLine, visibleLineCount, fontSize, scrollWidth, theme } = props;
   const highlightRange = useHighlightRange(highlight, visibleLine, visibleLineCount);
   const { backgroundColor, color } = theme;

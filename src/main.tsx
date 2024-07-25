@@ -1,6 +1,6 @@
 import { StrictMode, useCallback, useState, useTransition } from "react";
 import ReactDOM from "react-dom/client";
-import { EasyCodeEditor, DefaultDark } from "./lib";
+import EasyCodeEditor, { DefaultDark } from "./lib";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";

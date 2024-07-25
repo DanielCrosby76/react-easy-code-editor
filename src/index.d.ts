@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 export type Theme = {
   border: string;
   backgroundColor: string;
@@ -9,30 +11,6 @@ export type Theme = {
   font: string;
   fontSize: number;
 };
-
-export const DefaultLight: Theme;
-
-export const DefaultDark: Theme;
-
-export type EditorLineNumbersProps = {
-  lineCount: number;
-  showLineNumbers: boolean;
-  theme: Theme;
-};
-
-export const EditorLineNumbers: (props: EditorLineNumbersProps) => JSX.Element;
-
-export type EditorDisplayProps = {
-  code: string;
-  highlight: (code: string) => string;
-  visibleLine: number;
-  visibleLineCount: number;
-  fontSize: number;
-  scrollWidth: number;
-  theme: Theme;
-};
-
-export const EditorDisplay: (props: EditorDisplayProps) => JSX.Element;
 
 export type EasyCodeEditorProps = {
   value?: string;
@@ -46,5 +24,3 @@ export type EasyCodeEditorProps = {
   showLineNumbers?: boolean;
   theme?: Theme;
 };
-
-export const EasyCodeEditor: (props: EasyCodeEditorProps) => JSX.Element;

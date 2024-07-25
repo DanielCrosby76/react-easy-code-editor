@@ -7,6 +7,7 @@ import {
   useState,
   useEffect,
   useMemo,
+  FC,
 } from "react";
 import EditorDisplay from "./EditorDisplay";
 import useIndent from "../hooks/useIndent";
@@ -15,7 +16,7 @@ import EditorLineNumbers from "./EditorLineNumbers";
 import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 
-export default (props: EasyCodeEditorProps) => {
+const EasyCodeEditor: FC<EasyCodeEditorProps> = (props: EasyCodeEditorProps) => {
   const {
     value = undefined,
     onChange = () => {},
@@ -158,3 +159,5 @@ export default (props: EasyCodeEditorProps) => {
     </div>
   );
 };
+
+export default EasyCodeEditor;
