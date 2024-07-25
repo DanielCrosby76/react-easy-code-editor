@@ -12,6 +12,10 @@ export type Theme = {
   fontSize: number;
 };
 
+export const DefaultLight: Theme;
+
+export const DefaultDark: Theme;
+
 export type EasyCodeEditorProps = {
   value?: string;
   onChange?: (code: string) => void;
@@ -24,3 +28,7 @@ export type EasyCodeEditorProps = {
   showLineNumbers?: boolean;
   theme?: Theme;
 };
+
+export const EasyCodeEditor: FC<EasyCodeEditorProps>;
+
+export default EasyCodeEditor;
