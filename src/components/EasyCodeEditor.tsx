@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   useEffect,
+  useMemo,
 } from "react";
 import EditorDisplay from "./EditorDisplay";
 import useIndent from "../hooks/useIndent";
@@ -35,8 +36,12 @@ export default (props: EasyCodeEditorProps) => {
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
   const { border, caretColor, font, fontSize } = theme;
-  const visibleLineCount =
-    dynamicHighlight && inputRef.current ? Math.ceil(inputRef.current.clientHeight / fontSize) : -1;
+
+  const visibleLineCount = useMemo(() => {
+    return dynamicHighlight && inputRef.current
+      ? Math.ceil(inputRef.current.clientHeight / fontSize)
+      : -1;
+  }, [inputRef.current, fontSize]);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     const code = e.target.value;
@@ -146,6 +151,7 @@ export default (props: EasyCodeEditorProps) => {
           visibleLine={visibleLine}
           visibleLineCount={visibleLineCount}
           fontSize={fontSize}
+          scrollWidth={inputRef.current?.scrollWidth || 0}
           theme={theme}
         />
       </div>

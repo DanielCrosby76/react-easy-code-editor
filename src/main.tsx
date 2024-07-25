@@ -85,8 +85,14 @@ const HomePage = () => {
   );
 };
 
+const DevPage = () => {
+  return (
+    <div style={{ height: "50%", width: "70%", margin: "auto", marginTop: "20%" }}>
+      <EasyCodeEditor />
+    </div>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <HomePage />
-  </StrictMode>
+  <StrictMode>{import.meta.env.DEV ? <DevPage /> : <HomePage />}</StrictMode>
 );

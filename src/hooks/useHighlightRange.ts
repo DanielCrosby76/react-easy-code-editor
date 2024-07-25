@@ -4,22 +4,16 @@ export default (
   highlight: (code: string) => string,
   visibleLine: number,
   visibleLineCount: number
-): ((lines: string[]) => string) => {
+): ((lines: string[]) => [number, string]) => {
   const highlightRange = useCallback(
-    (lines: string[]): string => {
-      // TODO: cache(useMemo) highlighting and replace range
-      if (visibleLineCount < 0) return highlight(lines.join("\n") + "\n\n");
-      const start = Math.max(visibleLine - Math.floor(visibleLineCount), 0);
-      const end = Math.min(visibleLine + Math.ceil(visibleLineCount), lines.length);
+    (lines: string[]): [number, string] => {
+      if (visibleLineCount < 0) return [0, highlight(lines.join("\n") + "\n\n")];
+      const halfVisibleCount = Math.ceil(visibleLineCount);
+      const start = Math.max(visibleLine - halfVisibleCount, 0);
+      const end = Math.min(visibleLine + halfVisibleCount, lines.length);
       const highlightSlice = lines.slice(start, end);
-      const highlightedRange = highlight!(highlightSlice.join("\n"));
-      const highlghtedCode = [
-        ...new Array(start),
-        highlightedRange,
-        ...new Array(lines.length - end),
-      ];
-
-      return highlghtedCode.join("\n") + "\n\n";
+      const highlightedRange = highlight!(highlightSlice.join("\n")) + "\n\n";
+      return [start, highlightedRange];
     },
     [highlight, visibleLine, visibleLineCount]
   );

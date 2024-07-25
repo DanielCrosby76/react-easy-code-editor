@@ -28,6 +28,7 @@ export type EditorDisplayProps = {
   visibleLine: number;
   visibleLineCount: number;
   fontSize: number;
+  scrollWidth: number;
   theme: Theme;
 };
 

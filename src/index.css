@@ -46,16 +46,16 @@
 }
 
 .easy-editor-display-pre {
+  position: relative;
   box-sizing: border-box;
   margin: 0px;
   line-height: 1;
-  width: fit-content;
-  height: fit-content;
   font: inherit;
   line-height: inherit;
 }
 
 .easy-editor-display-code {
+  position: absolute;
   box-sizing: border-box;
   display: inline-block;
   margin: 0px;
