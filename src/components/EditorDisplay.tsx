@@ -18,8 +18,9 @@ export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
   const { backgroundColor, color } = theme;
 
   const lines = code.split("\n");
+  const lineCount = lines.length;
   const [linesBefore, highlightedCode] = highlightRange(lines);
-  const codeHeight = useMemo(() => lines.length * fontSize + fontSize, [lines.length, fontSize]);
+  const codeHeight = useMemo(() => lineCount * fontSize + fontSize, [lineCount, fontSize]);
   const codeTop = useMemo(() => linesBefore * fontSize, [linesBefore, fontSize]);
 
   return (

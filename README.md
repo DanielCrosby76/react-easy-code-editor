@@ -23,7 +23,7 @@ See the [examples](examples/) folder for more.
 
 ```jsx
 import { useState } from "react";
-import { EasyCodeEditor } from "react-easy-code-editor";
+import EasyCodeEditor from "react-easy-code-editor";
 
 // A third party library is not needed for syntax highlighing
 // A custom highlight function can be created instead
@@ -84,7 +84,7 @@ All props are optional.
 
 ```js
 // Import a theme of choice
-import { DefaultDark } from "react-easy-code-editor";
+import EasyCodeEditor, { DefaultDark } from "react-easy-code-editor";
 
 // Apply theme to code editor
 <EasyCodeEditor theme={DefaultDark} />;
@@ -106,8 +106,6 @@ const myTheme = {
 
 #### Planned
 
-- Tests
 - Automatic indent on new lines
-- Wrap selected code with: [] () <> {} "" '' ``
 - JSX highlight support
 - Optional line wrapping

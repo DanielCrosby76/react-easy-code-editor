@@ -76,7 +76,8 @@ export default (props: EasyCodeEditorProps) => {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
-      if (e.key === "Tab") {
+      const key = e.key;
+      if (key === "Tab" && trapTab) {
         e.preventDefault();
         e.stopPropagation();
         const value = e.currentTarget.value;
@@ -90,6 +91,43 @@ export default (props: EasyCodeEditorProps) => {
             inputRef.current.selectionEnd = end + indentCount;
           }
         }, 0);
+      } else if (/[\[\]{}()<>\"'`]/g.test(key)) {
+        const start = e.currentTarget.selectionStart;
+        const end = e.currentTarget.selectionEnd;
+        if (start != end) {
+          e.preventDefault();
+          e.stopPropagation();
+          const insertChar = (value: string, char: string, index: number) => {
+            if (index > value.length) {
+              return value + char;
+            }
+            return value.slice(0, index) + char + value.slice(index);
+          };
+          const openingBrackets = ["(", "[", "{", "<", "'", '"', "`"];
+          const closingBrackets = [")", "]", "}", ">", "'", '"', "`"];
+          const value = e.currentTarget.value;
+          if (openingBrackets.includes(key)) {
+            const code = insertChar(
+              insertChar(value, key, start),
+              closingBrackets[openingBrackets.indexOf(key)],
+              end + 1
+            );
+            setCode(code);
+          } else {
+            const code = insertChar(
+              insertChar(value, key, end),
+              openingBrackets[closingBrackets.indexOf(key)],
+              start
+            );
+            setCode(code);
+          }
+          setTimeout(() => {
+            if (inputRef.current) {
+              inputRef.current.selectionStart = start + 1;
+              inputRef.current.selectionEnd = end + 1;
+            }
+          }, 0);
+        }
       }
     },
     [indent]
@@ -135,7 +173,7 @@ export default (props: EasyCodeEditorProps) => {
           spellCheck={false}
           onChange={handleChange}
           onScroll={handleScroll}
-          onKeyDown={trapTab ? handleKeyDown : undefined}
+          onKeyDown={handleKeyDown}
           ref={inputRef}
           style={{ caretColor: caretColor }}
           value={code}

@@ -12,6 +12,7 @@
   ],
   "module": "./dist/react-easy-code-editor.js",
   "main": "./dist/react-easy-code-editor.cjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
