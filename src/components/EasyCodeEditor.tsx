@@ -14,6 +14,7 @@ import DefaultLight from "../themes/DefaultLight";
 import EditorLineNumbers from "./EditorLineNumbers";
 import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
+import useEnclose from "../hooks/useEnclose";
 
 export default (props: EasyCodeEditorProps) => {
   const {
@@ -35,6 +36,7 @@ export default (props: EasyCodeEditorProps) => {
   const lineNumbersRef = useRef<HTMLPreElement>(null);
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
+  const enclose = useEnclose();
   const { border, caretColor, font, fontSize } = theme;
 
   const visibleLineCount = useMemo(() => {
@@ -64,7 +66,6 @@ export default (props: EasyCodeEditorProps) => {
       });
       lineNumbersRef.current?.scroll({
         top: scrollTop,
-        left: scrollLeft,
         behavior: "instant",
       });
       const topVisibleLine = Math.floor(scrollTop / fontSize);
@@ -74,63 +75,52 @@ export default (props: EasyCodeEditorProps) => {
     [fontSize, visibleLineCount]
   );
 
+  const handleTab = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const value = e.currentTarget.value;
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+      // TODO handle shift indent
+      const [indentedCode, indentCount] = indent(value, start, end);
+      setCode(indentedCode);
+      queueMicrotask(() => {
+        if (!inputRef.current) return;
+        if (start !== end) inputRef.current.selectionStart = start + tabWidth;
+        inputRef.current.selectionEnd = end + indentCount;
+      });
+    },
+    [indent]
+  );
+
+  const handleEnclose = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
+    const start = e.currentTarget.selectionStart;
+    const end = e.currentTarget.selectionEnd;
+    if (start === end) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const value = e.currentTarget.value;
+    const enclosedCode = enclose(value, e.key, start, end);
+    setCode(enclosedCode);
+    queueMicrotask(() => {
+      if (!inputRef.current) return;
+      inputRef.current.selectionStart = start + 1;
+      inputRef.current.selectionEnd = end + 1;
+    });
+  }, []);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
       const key = e.key;
-      if (key === "Tab" && trapTab) {
-        e.preventDefault();
-        e.stopPropagation();
-        const value = e.currentTarget.value;
-        const start = e.currentTarget.selectionStart;
-        const end = e.currentTarget.selectionEnd;
-        const [indentedCode, indentCount] = indent(value, start, end);
-        setCode(indentedCode);
-        setTimeout(() => {
-          if (inputRef.current) {
-            if (start !== end) inputRef.current.selectionStart = start + tabWidth;
-            inputRef.current.selectionEnd = end + indentCount;
-          }
-        }, 0);
-      } else if (/[\[\]{}()<>\"'`]/g.test(key)) {
-        const start = e.currentTarget.selectionStart;
-        const end = e.currentTarget.selectionEnd;
-        if (start != end) {
-          e.preventDefault();
-          e.stopPropagation();
-          const insertChar = (value: string, char: string, index: number) => {
-            if (index > value.length) {
-              return value + char;
-            }
-            return value.slice(0, index) + char + value.slice(index);
-          };
-          const openingBrackets = ["(", "[", "{", "<", "'", '"', "`"];
-          const closingBrackets = [")", "]", "}", ">", "'", '"', "`"];
-          const value = e.currentTarget.value;
-          if (openingBrackets.includes(key)) {
-            const code = insertChar(
-              insertChar(value, key, start),
-              closingBrackets[openingBrackets.indexOf(key)],
-              end + 1
-            );
-            setCode(code);
-          } else {
-            const code = insertChar(
-              insertChar(value, key, end),
-              openingBrackets[closingBrackets.indexOf(key)],
-              start
-            );
-            setCode(code);
-          }
-          setTimeout(() => {
-            if (inputRef.current) {
-              inputRef.current.selectionStart = start + 1;
-              inputRef.current.selectionEnd = end + 1;
-            }
-          }, 0);
-        }
-      }
+      if (key === "Tab" && trapTab) handleTab(e);
+      else if (/[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
+      // else if (key === "Enter") {
+      //   e.preventDefault();
+      //   e.stopPropagation();
+      // }
     },
-    [indent]
+    [handleTab]
   );
 
   useEffect(() => {
