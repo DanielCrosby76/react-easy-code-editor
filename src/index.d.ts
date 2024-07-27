@@ -20,7 +20,7 @@ export type EasyCodeEditorProps = {
   value?: string;
   onChange?: (code: string) => void;
   placeholder?: string;
-  highlight?: (code: string) => string;
+  highlight?: (code: string) => string | JSX.Element | JSX.Element[];
   dynamicHighlight?: boolean;
   readonly?: boolean;
   trapTab?: boolean;

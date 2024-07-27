@@ -105,9 +105,3 @@ const myTheme = {
   fontSize: 16,
 };
 ```
-
-#### Planned
-
-- JSX highlight support
-- Optional line wrapping
-- EasyCodeEmbed export

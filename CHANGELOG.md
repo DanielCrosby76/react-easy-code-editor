@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default library export
 - Wrap selected code with: `[]` `()` `<>` `{}` `""` `''` `""` ` `` `
 - Automatic indent on new lines
+- JSX highlight support
 
 ### Changed
 

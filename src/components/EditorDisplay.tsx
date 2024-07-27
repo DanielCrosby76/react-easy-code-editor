@@ -4,7 +4,7 @@ import { Theme } from "../index";
 
 type EditorDisplayProps = {
   code: string;
-  highlight: (code: string) => string;
+  highlight: (code: string) => string | JSX.Element | JSX.Element[];
   visibleLine: number;
   visibleLineCount: number;
   fontSize: number;
@@ -22,6 +22,7 @@ export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
   const [linesBefore, highlightedCode] = highlightRange(lines);
   const codeHeight = useMemo(() => lineCount * fontSize + fontSize, [lineCount, fontSize]);
   const codeTop = useMemo(() => linesBefore * fontSize, [linesBefore, fontSize]);
+  const isStringHighlight = typeof highlightedCode === "string";
 
   return (
     <div
@@ -40,9 +41,14 @@ export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
             color,
             top: codeTop,
           }}
-          dangerouslySetInnerHTML={{
-            __html: highlightedCode,
-          }}
+          children={isStringHighlight ? undefined : highlightedCode}
+          dangerouslySetInnerHTML={
+            isStringHighlight
+              ? {
+                  __html: highlightedCode,
+                }
+              : undefined
+          }
         />
       </pre>
     </div>

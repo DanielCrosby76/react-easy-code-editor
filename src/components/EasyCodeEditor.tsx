@@ -21,7 +21,7 @@ export default (props: EasyCodeEditorProps) => {
     value = undefined,
     onChange = () => {},
     placeholder,
-    highlight = (code) => code.replace(/[&<>"'`/=]/g, (char) => `<span>${char}</span>`),
+    highlight = (code) => <>{code}</>,
     dynamicHighlight = true,
     readonly = false,
     trapTab = false,

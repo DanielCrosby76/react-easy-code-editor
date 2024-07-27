@@ -42,7 +42,7 @@ const demoHtml = `<style>
 </h3>
 <p>
   Check out the <a class="link" href="https://github.com/DanielCrosby76/react-easy-code-editor">github</a>,
-  <a class="link" href="https://stackblitz.com/edit/react-easy-code-editor">live code demo</a>
+  <a class="link" href="https://stackblitz.com/edit/react-easy-code-editor">example project</a>
   or install the package yourself:
 </p>
 <div id="install">npm i react-easy-code-editor</div>
