@@ -47,9 +47,9 @@ export default (props: EasyCodeEditorProps) => {
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     const code = e.target.value;
-    const cursorPosition = e.target.selectionStart;
-    const codeBeforeCursor = code.substring(0, cursorPosition);
-    const editedLine = (codeBeforeCursor.match(/\n/g) || []).length;
+    const start = e.target.selectionStart;
+    const codeBeforeStart = code.substring(0, start);
+    const editedLine = (codeBeforeStart.match(/\n/g) || []).length;
     setLineCount((code.match(/\n/g) || []).length + 1);
     setVisibleLine(editedLine);
     setCode(code);
@@ -78,7 +78,6 @@ export default (props: EasyCodeEditorProps) => {
   const handleTab = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
       e.preventDefault();
-      e.stopPropagation();
       const value = e.currentTarget.value;
       const start = e.currentTarget.selectionStart;
       const end = e.currentTarget.selectionEnd;
@@ -99,7 +98,6 @@ export default (props: EasyCodeEditorProps) => {
     const end = e.currentTarget.selectionEnd;
     if (start === end) return;
     e.preventDefault();
-    e.stopPropagation();
     const value = e.currentTarget.value;
     const enclosedCode = enclose(value, e.key, start, end);
     setCode(enclosedCode);
@@ -110,17 +108,43 @@ export default (props: EasyCodeEditorProps) => {
     });
   }, []);
 
+  const handleNewLine = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+      if (start !== end) return;
+      e.preventDefault();
+      const value = e.currentTarget.value;
+      const startLines = value.substring(0, start);
+      const startLinesSplit = startLines.split("\n");
+      const currentLine = startLinesSplit[startLinesSplit.length - 1];
+      const spacesCount = currentLine!.match(/^ +/);
+      const currentIndent = spacesCount ? spacesCount[0].length : 0;
+      const indentedLine = " ".repeat(currentIndent);
+      const indentedCode = `${startLines}\n${indentedLine}${value.substring(start)}`;
+      const bottomVisibleLine = visibleLineCount + Math.floor(e.currentTarget.scrollTop / fontSize);
+      const newLine = startLinesSplit.length + 1;
+      setVisibleLine(newLine);
+      setLineCount((indentedCode.match(/\n/g) || []).length + 1);
+      setCode(indentedCode);
+      queueMicrotask(() => {
+        if (!inputRef.current) return;
+        inputRef.current.selectionEnd = start + indentedLine.length + 1;
+        if (newLine >= bottomVisibleLine) inputRef.current.scrollTop += fontSize;
+        inputRef.current.scrollLeft = 0;
+      });
+    },
+    [visibleLineCount, fontSize]
+  );
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
       const key = e.key;
       if (key === "Tab" && trapTab) handleTab(e);
       else if (/[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
-      // else if (key === "Enter") {
-      //   e.preventDefault();
-      //   e.stopPropagation();
-      // }
+      else if (key === "Enter") handleNewLine(e);
     },
-    [handleTab]
+    [handleTab, handleNewLine]
   );
 
   useEffect(() => {
@@ -131,8 +155,11 @@ export default (props: EasyCodeEditorProps) => {
       const halfCount = Math.ceil(visibleLineCount / 2);
       setVisibleLine(topVisibleLine + halfCount);
     };
+    const resizeObserver = new ResizeObserver(resize);
+    if (inputRef.current) resizeObserver.observe(inputRef.current);
     window.addEventListener("resize", resize);
     return () => {
+      if (inputRef.current) resizeObserver.unobserve(inputRef.current);
       window.removeEventListener("resize", resize);
     };
   }, []);

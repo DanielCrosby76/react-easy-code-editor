@@ -17,7 +17,7 @@ npm install react-easy-code-editor
 - ✨ Dynamic Syntax highlighting
 - 📜 Does not wrap lines
 - ☂️ Wrap selected code with: `[]` `()` `<>` `{}` `""` `''` `""` ` `` `
-<!-- - 🪜 Automatic indent on new lines -->
+- 🪜 Automatic indent on new lines
 
 ### Basic Usage
 
@@ -108,7 +108,6 @@ const myTheme = {
 
 #### Planned
 
-- Automatic indent on new lines
 - JSX highlight support
 - Optional line wrapping
-- EasyEditorDisplay export
+- EasyCodeEmbed export

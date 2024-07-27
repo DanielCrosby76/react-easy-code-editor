@@ -12,7 +12,7 @@
   display: flex;
   flex: 1;
   font: inherit;
-  line-height: inherit;
+  line-height: 1;
 }
 
 .easy-editor-input {

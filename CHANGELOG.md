@@ -12,11 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Simplified dev page
 - Default library export
 - Wrap selected code with: `[]` `()` `<>` `{}` `""` `''` `""` ` `` `
+- Automatic indent on new lines
 
 ### Changed
 
 - Optimised dynamic highlight rendering, performance is now tied to the supplied highlight function and the components textarea element
 - Simplified types
+
+### Fixed
+
+- Component correctly risizes with parent elemet
 
 ## [1.0.0] - 2024-07-20
 

@@ -87,7 +87,17 @@ const HomePage = () => {
 
 const DevPage = () => {
   return (
-    <div style={{ height: "50%", width: "70%", margin: "auto", marginTop: "20%" }}>
+    <div
+      style={{
+        position: "relative",
+        height: "50%",
+        width: "50%",
+        margin: "auto",
+        top: "25%",
+        resize: "both",
+        overflow: "auto",
+      }}
+    >
       <EasyCodeEditor trapTab />
     </div>
   );
