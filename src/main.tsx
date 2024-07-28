@@ -10,10 +10,12 @@ import "prismjs/components/prism-css";
 import "prismjs/themes/prism-dark.css";
 import "./main.css";
 
-const demoHtml = `<style>
+const demoHtml = `<!-- Welcome to the <ReactEasyCodeEditor /> live demo! -->
+<style>
 #react-icon {
   animation: rotating 20s linear infinite;
   height: 150px;
+  padding: 10px
 }
 #description {
   color: gray;
@@ -36,7 +38,7 @@ const demoHtml = `<style>
 <h1>
   React Easy Code Editor
 </h1>
-<a class="link" href="https://www.npmjs.com/package/react-easy-code-editor">v1.0.0</a>
+<a class="link" href="https://www.npmjs.com/package/react-easy-code-editor">v1.1.0</a>
 <h3 id="description">
   An easy to use react based code editor with syntax highlighting.
 </h3>
@@ -75,7 +77,6 @@ const HomePage = () => {
             theme={{
               ...DefaultDark,
               border: "none",
-              numbersBackgroundColor: "#2a2a2e",
             }}
           />
         </div>
@@ -104,5 +105,5 @@ const DevPage = () => {
 };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>{import.meta.env.DEV ? <DevPage /> : <HomePage />}</StrictMode>
+  <StrictMode>{!import.meta.env.DEV ? <DevPage /> : <HomePage />}</StrictMode>
 );
