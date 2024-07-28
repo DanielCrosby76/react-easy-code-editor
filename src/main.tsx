@@ -99,11 +99,11 @@ const DevPage = () => {
         overflow: "auto",
       }}
     >
-      <EasyCodeEditor trapTab />
+      <EasyCodeEditor trapTab  theme={DefaultDark} tabWidth={4}/>
     </div>
   );
 };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>{!import.meta.env.DEV ? <DevPage /> : <HomePage />}</StrictMode>
+  <StrictMode>{import.meta.env.DEV ? <DevPage /> : <HomePage />}</StrictMode>
 );

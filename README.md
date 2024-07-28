@@ -1,6 +1,7 @@
 # React Easy Code Editor
 
-An easy to use react based code editor with syntax highlighting.
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+[![NPM Version](https://img.shields.io/npm/v/react-easy-code-editor)](https://www.npmjs.com/package/react-easy-code-editor)
 
 React easy code editor is a small and simple library that aims to provide the user a much improved experience and increased performance over the popular libraries [react-simple-code-editor](https://github.com/react-simple-code-editor/react-simple-code-editor) and [react-textarea-code-editor](https://github.com/uiwjs/react-textarea-code-editor) while maintaining a small build size and concise code base. This library is for those who value usability and simplicity but do not need somthing fully featured like the codemirror or monaco editors.
 
