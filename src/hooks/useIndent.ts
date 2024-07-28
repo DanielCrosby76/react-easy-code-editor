@@ -10,8 +10,7 @@ export default (tabWidth: number) => {
         const line = lines[startLine];
         const regex = new RegExp(`^ {0,${tabWidth}}`);
         const match = line.match(regex);
-        if (!match) return [code, start, end];
-        const spaceCount = match[0].length;
+        const spaceCount = match![0].length;
         if (spaceCount === 0) return [code, start, end];
         lines[startLine] = line.replace(regex, "");
         return [lines.join("\n"), start - spaceCount, end - spaceCount];
@@ -42,8 +41,7 @@ export default (tabWidth: number) => {
         }
         const regex = new RegExp(`^ {0,${tabWidth}}`);
         const match = line.match(regex);
-        if (!match) return line;
-        const spaceCount = match[0].length;
+        const spaceCount = match![0].length;
         if (spaceCount === 0) return line;
         if (index === 0) newStart -= spaceCount;
         newEnd -= spaceCount;

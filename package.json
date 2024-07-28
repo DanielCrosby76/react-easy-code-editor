@@ -23,6 +23,8 @@
   },
   "scripts": {
     "dev": "vite",
+    "test": "vitest run",
+    "test:ui": "vitest --ui --coverage",
     "build": "tsc -b && vite build",
     "build:homepage": "tsc -b && vite build --config vite.config.homepage.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -33,21 +35,27 @@
     "react-dom": ">=18.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^2.0.4",
+    "@vitest/ui": "^2.0.4",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "jsdom": "^24.1.1",
     "prismjs": "^1.29.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vite-plugin-css-injected-by-js": "^3.5.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "vitest": "^2.0.4"
   },
   "repository": {
     "type": "git",
