@@ -19,6 +19,7 @@ export default defineConfig({
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "react/jsx-runtime",
         },
+        exports: "named",
       },
     },
   },

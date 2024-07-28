@@ -81,13 +81,13 @@ export default (props: EasyCodeEditorProps) => {
       const value = e.currentTarget.value;
       const start = e.currentTarget.selectionStart;
       const end = e.currentTarget.selectionEnd;
-      // TODO handle shift indent
-      const [indentedCode, indentCount] = indent(value, start, end);
+      const isShift = e.shiftKey;
+      const [indentedCode, newStart, newEnd] = indent(value, start, end, isShift);
       setCode(indentedCode);
       queueMicrotask(() => {
         if (!inputRef.current) return;
-        if (start !== end) inputRef.current.selectionStart = start + tabWidth;
-        inputRef.current.selectionEnd = end + indentCount;
+        if (start !== end) inputRef.current.selectionStart = newStart;
+        inputRef.current.selectionEnd = newEnd;
       });
     },
     [indent]
