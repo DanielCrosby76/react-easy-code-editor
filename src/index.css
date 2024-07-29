@@ -72,4 +72,6 @@
   margin: 0px;
   font: inherit;
   line-height: inherit;
+  pointer-events: none;
+  user-select: none;
 }

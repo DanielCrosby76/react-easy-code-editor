@@ -22,6 +22,7 @@ Release cadididate that has feature parity with other libraries.
 
 - Optimised dynamic highlight rendering, performance is now tied to the supplied highlight function and the components textarea element.
 - Simplified types.
+- Moved react to a peer dependency
 
 ### Fixed
 
