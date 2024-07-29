@@ -23,6 +23,8 @@ export type EasyCodeEditorProps = {
   highlight?: (code: string) => string | JSX.Element | JSX.Element[];
   dynamicHighlight?: boolean;
   readonly?: boolean;
+  autoIndent?: boolean;
+  wrapParens?: boolean;
   trapTab?: boolean;
   tabWidth?: number;
   showLineNumbers?: boolean;

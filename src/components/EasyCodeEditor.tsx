@@ -24,6 +24,8 @@ export default (props: EasyCodeEditorProps) => {
     highlight = (code) => <>{code}</>,
     dynamicHighlight = true,
     readonly = false,
+    wrapParens = true,
+    autoIndent = true,
     trapTab = false,
     tabWidth = 2,
     showLineNumbers = true,
@@ -140,9 +142,9 @@ export default (props: EasyCodeEditorProps) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
       const key = e.key;
-      if (key === "Tab" && trapTab) handleTab(e);
-      else if (/[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
-      else if (key === "Enter") handleNewLine(e);
+      if (trapTab && key === "Tab") handleTab(e);
+      else if (wrapParens && /[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
+      else if (autoIndent && key === "Enter") handleNewLine(e);
     },
     [handleTab, handleNewLine]
   );
