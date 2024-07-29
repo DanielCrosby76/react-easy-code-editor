@@ -8,7 +8,7 @@ const DefaultLight: Theme = {
   numbersColor: "#6c6c6c",
   numbersBorder: "1px solid #ddd",
   caretColor: "black",
-  font: "inherit",
+  font: "Fira code, Fira Mono, Consolas, Menlo, Courier, monospace",
   fontSize: 16,
 };
 

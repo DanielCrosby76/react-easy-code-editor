@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { EasyCodeEditor } from "react-easy-code-editor";
+import EasyCodeEditor from "react-easy-code-editor";
 
 const FormEditor = () => {
   const [{ name, code }, setFormState] = useState({ name: "", code: "" });

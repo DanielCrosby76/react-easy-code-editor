@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { EasyCodeEditor } from "react-easy-code-editor";
+import EasyCodeEditor from "react-easy-code-editor";
 
 const FullScreenEditor = () => {
   // Alternativly apply styles in a css file

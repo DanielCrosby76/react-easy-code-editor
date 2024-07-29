@@ -1,7 +1,7 @@
 {
   "name": "react-easy-code-editor",
   "description": "An easy to use react based code editor with syntax highlighting.",
-  "version": "1.1.0-rc.1",
+  "version": "1.1.0",
   "license": "MIT",
   "author": {
     "name": "Daniel Crosby",

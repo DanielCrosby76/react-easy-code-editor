@@ -8,7 +8,7 @@ const DefaultDark: Theme = {
   numbersColor: "#686868",
   numbersBorder: "1px solid #686868",
   caretColor: "#f5f5f5",
-  font: "inherit",
+  font: "Fira code, Fira Mono, Consolas, Menlo, Courier, monospace",
   fontSize: 16,
 };
 
