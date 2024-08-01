@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), cssInjectedByJsPlugin()],
   build: {
     lib: {
-      entry: "src/lib.tsx",
+      entry: "src/lib/exports.tsx",
       name: "reactEasy",
       fileName: "react-easy-code-editor",
     },
@@ -32,9 +32,9 @@ export default defineConfig({
         ...configDefaults.coverage.exclude!,
         "docs/**",
         "examples/**",
-        "src/lib.tsx",
+        "src/lib/exports.tsx",
         "src/main.tsx",
-        "src/themes/**",
+        "src/lib/themes/**",
       ],
     },
   },

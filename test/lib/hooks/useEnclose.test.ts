@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import useEnclose from "../../src/hooks/useEnclose";
+import useEnclose from "../../../src/lib/hooks/useEnclose";
 
 it("Should wrap code in brackets", () => {
   const code = `code`;

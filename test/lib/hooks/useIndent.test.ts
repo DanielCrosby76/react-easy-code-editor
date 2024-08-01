@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import useIndent from "../../src/hooks/useIndent";
+import useIndent from "../../../src/lib/hooks/useIndent";
 
 it("Should insert a tab at current position", () => {
   const code = `console.log("Hello, World!");`;

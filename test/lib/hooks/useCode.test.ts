@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import useCode from "../../src/hooks/useCode";
+import useCode from "../../../src/lib/hooks/useCode";
 
 it("Should manage state", () => {
   const inputCode = `console.log("Hello, World!");`;

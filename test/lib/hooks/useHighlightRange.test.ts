@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import useHighlightRange from "../../src/hooks/useHighlightRange";
+import useHighlightRange from "../../../src/lib/hooks/useHighlightRange";
 
 // TODO adjust highlight range hook to function more predictably
 it("Should highlight code range", () => {
