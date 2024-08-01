@@ -25,18 +25,21 @@ export default () => {
   return (
     <div id="ide">
       <div id="ide-buttons">
-        <button className="ide-button" onClick={() => setOutput(interpreter(code))}>
+        <button
+          className="ide-button"
+          onClick={() =>
+            setOutput((output) => (output ? `${output}\n${interpreter(code)}` : interpreter(code)))
+          }
+        >
           Run
         </button>
-        {/* <button className="ide-button">Format</button>
-        <button className="ide-button">Clear</button> */}
+        <button className="ide-button">Format</button>
       </div>
       <div id="ide-input">
         <EasyCodeEditor
           value={code}
           onChange={(code) => setCode(code)}
           highlight={(code) => customBFHighlight(code)}
-          // theme={DefaultDark}
           theme={{ ...DefaultDark, border: "none" }}
         />
       </div>

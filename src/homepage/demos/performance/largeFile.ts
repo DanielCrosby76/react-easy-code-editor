@@ -1,13 +1,13 @@
-// Large MIT licensed file for testing
 export default `/**
- * @license React
- * react.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license.
+ * Welcome to the <ReactEasyCodeEditor /> performance demo!
+ * This file is ~2700 lines long.
+ * 
+ * Both react-simple-code-editor and react-textarea-code-editor
+ * run into major performance issue with files of signifigantly smaller size.
+ * 
+ * Note: This demo code is licensed under the MIT license. 
+ * Source: react.development.js
  */
-
 'use strict';
 
 if (process.env.NODE_ENV !== "production") {

@@ -4,5 +4,5 @@ import Dev from "./Dev";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>{!import.meta.env.DEV ? <Dev /> : <App />}</StrictMode>
+  <StrictMode>{import.meta.env.DEV ? <Dev /> : <App />}</StrictMode>
 );

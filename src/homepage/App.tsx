@@ -1,27 +1,29 @@
 import { Dispatch, memo, SetStateAction, useState } from "react";
 import RealTime from "./demos/preview/RealTime";
 import Performance from "./demos/performance/Performance";
-import EsolangIDE from "./demos/ide/EsolangIDE";
+import IDE from "./demos/ide/IDE";
 import "./main.css";
 
 const Header = ({ setDemo }: { setDemo: Dispatch<SetStateAction<string>> }) => {
   return (
     <div id="header">
-      <span id="header-text-container">
-        <img id="header-icon" src="./react.svg" alt="react"></img>
-        <span id="header-text">React Easy Code Editor</span>
-      </span>
-      <select id="demo-select" defaultValue="RealTime" onChange={(e) => setDemo(e.target.value)}>
-        <option className="demo-select-option" value="RealTime">
-          RealTime Demo
-        </option>
-        <option className="demo-select-option" value="Performance">
-          Performance Demo
-        </option>
-        <option className="demo-select-option" value="EsolangIDE">
-          EsolangIDE Demo
-        </option>
-      </select>
+      <div id="header-container">
+        <span id="header-text-container">
+          <img id="header-icon" src="./react.svg" alt="react"></img>
+          <span id="header-text">React Easy Code Editor</span>
+        </span>
+        <select id="demo-select" defaultValue="RealTime" onChange={(e) => setDemo(e.target.value)}>
+          <option className="demo-select-option" value="RealTime">
+            Real Time Demo
+          </option>
+          <option className="demo-select-option" value="Performance">
+            Performance Demo
+          </option>
+          <option className="demo-select-option" value="IDE">
+            IDE Demo
+          </option>
+        </select>
+      </div>
     </div>
   );
 };
@@ -32,8 +34,8 @@ const Body = memo(({ demo }: { demo: string }) => {
       return <RealTime />;
     case "Performance":
       return <Performance />;
-    case "EsolangIDE":
-      return <EsolangIDE />;
+    case "IDE":
+      return <IDE />;
   }
 });
 

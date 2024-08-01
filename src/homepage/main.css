@@ -14,11 +14,16 @@ body {
 }
 
 #header {
-  display: flex;
-  justify-content: space-between;
   background-color: #2a2a2e;
   padding: 15px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: #61dbfb 0px 0px 2px;
+}
+
+#header-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 75%;
 }
 
 #demo-select {
@@ -27,6 +32,17 @@ body {
   color: aliceblue;
   border: none;
   outline: none;
+}
+
+#demo-select:hover {
+  color: #61dbfb;
+  border: none;
+  outline: none;
+}
+
+.demo-select-option {
+  background-color: #18181b;
+  color: aliceblue;
 }
 
 #header-text-container {
@@ -53,15 +69,13 @@ body {
   }
 }
 
-#demo-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
 @media only screen and (width <= 1024px) {
   #root {
     overflow: auto;
     scrollbar-width: thin;
+  }
+
+  #header-container {
+    width: 100%;
   }
 }

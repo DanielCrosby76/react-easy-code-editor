@@ -8,7 +8,6 @@ export default () => {
         height: "50%",
         width: "50%",
         margin: "auto",
-        top: "25%",
         resize: "both",
         overflow: "auto",
       }}

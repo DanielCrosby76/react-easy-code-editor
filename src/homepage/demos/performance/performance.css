@@ -1,6 +1,6 @@
 #performance {
   display: flex;
-  width: 90%;
+  width: 75%;
   height: 90%;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -11,7 +11,8 @@
 }
 
 @media only screen and (width <= 1024px) {
-  #real-time-preview {
-    flex-direction: column-reverse;
+  #performance {
+    width: 100%;
+    flex-grow: 1;
   }
 }

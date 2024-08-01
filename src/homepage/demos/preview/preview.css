@@ -1,6 +1,6 @@
 #real-time-preview {
   display: flex;
-  width: 90%;
+  width: 75%;
   height: 90%;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -21,10 +21,9 @@
   padding-top: 5%;
   overflow-y: auto;
   scrollbar-width: thin;
-  border: 2px solid #2a2a2e;
 }
 
-@media only screen and (width <= 1024px) {
+@media only screen and (width <= 1440px) {
   #real-time-preview {
     flex-direction: column-reverse;
   }
@@ -37,5 +36,16 @@
   #output {
     height: 50%;
     width: 100%;
+  }
+}
+
+@media only screen and (width <= 1024px) {
+  #real-time-preview {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  #output {
+    border: none;
   }
 }
