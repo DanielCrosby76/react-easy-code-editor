@@ -12,6 +12,7 @@ Quality of life updates.
 ### Added
 
 - Undo/Redo stack.
+- Full unit test coverage.
 
 ## [1.1.1] - Unreleased
 
@@ -19,7 +20,7 @@ Clean up and Stability patch.
 
 ### Added
 
-- Unit test coverage.
+- Increased unit test coverage.
 - Improved examples on homepage: live preview, mini-ide, diff?, performance 
 
 ### Changed
