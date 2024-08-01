@@ -99,7 +99,7 @@ const DevPage = () => {
         overflow: "auto",
       }}
     >
-      <EasyCodeEditor trapTab  theme={DefaultDark} tabWidth={4}/>
+      <EasyCodeEditor trapTab  theme={DefaultDark} tabWidth={4} />
     </div>
   );
 };

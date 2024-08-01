@@ -5,11 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - Planned
+
+Quality of life updates.
+
+### Added
+
+- Undo/Redo stack.
+
+## [1.1.1] - Unreleased
+
+Clean up and Stability patch.
+
+### Added
+
+- 100% unit test coverage.
+- Improved examples on homepage: live preview, mini-ide, diff?, performance 
+
+### Changed
+
+- Visible range of editor to be more consistent.
+
 ## [1.1.0] - 2023-07-29
 
 Full release with full feature set.
 
-## Changed
+### Changed
 
 - Default themes to use monospace font.
 - Updated examples to use default import.
