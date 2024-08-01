@@ -1,0 +1,17 @@
+#performance {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.token.operator {
+  background: none;
+}
+
+@media only screen and (width <= 1024px) {
+  #real-time-preview {
+    flex-direction: column-reverse;
+  }
+}

@@ -118,7 +118,8 @@ const myTheme = {
 
 [license-badge]: https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge
 [license-link]: https://opensource.org/licenses/MIT
-[npm-version-badge]: https://img.shields.io/npm/v/react-easy-code-editor?logo=npm&logoColor=CB3837&style=for-the-badge&color=CB3837&
+<!-- logo=npm -->
+[npm-version-badge]: https://img.shields.io/npm/v/react-easy-code-editor?&logoColor=CB3837&style=for-the-badge&color=CB3837&
 [npm-version-link]: https://www.npmjs.com/package/react-easy-code-editor
 [npm-bundle-size-badge]: https://img.shields.io/bundlephobia/minzip/react-easy-code-editor?style=for-the-badge
 [npm-bundle-size-link]: https://bundlephobia.com/package/react-easy-code-editor

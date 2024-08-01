@@ -1,4 +1,4 @@
-export default `<!-- Welcome to the <ReactEasyCodeEditor /> live preview demo! -->
+export default `<!-- Welcome to the <ReactEasyCodeEditor /> real-time demo! -->
 <style>
 #react-icon {
     animation: rotating 20s linear infinite;
