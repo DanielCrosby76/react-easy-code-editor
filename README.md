@@ -1,7 +1,14 @@
 # React Easy Code Editor
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
-[![NPM Version](https://img.shields.io/npm/v/react-easy-code-editor)](https://www.npmjs.com/package/react-easy-code-editor)
+[![License: MIT][license-badge]][license-link]
+[![NPM Version][npm-version-badge]][npm-version-link]
+[![NPM bundle size][npm-bundle-size-badge]][npm-bundle-size-link]
+
+[![Nodejs][nodejs-badge]][nodejs-link]
+[![React][react-badge]][react-link]
+[![Typescript][typescript-badge]][typescript-link]
+[![Vite][vite-badge]][vite-link]
+[![Vitest][vitest-badge]][vitest-link]
 
 React easy code editor is a small and simple library that aims to provide the user a much improved experience and increased performance over the popular libraries [react-simple-code-editor](https://github.com/react-simple-code-editor/react-simple-code-editor) and [react-textarea-code-editor](https://github.com/uiwjs/react-textarea-code-editor) while maintaining a small build size and concise code base. This library is for those who value usability and simplicity but do not need somthing fully featured like the codemirror or monaco editors.
 
@@ -108,3 +115,20 @@ const myTheme = {
   fontSize: 16,
 };
 ```
+
+[license-badge]: https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge
+[license-link]: https://opensource.org/licenses/MIT
+[npm-version-badge]: https://img.shields.io/npm/v/react-easy-code-editor?logo=npm&logoColor=CB3837&style=for-the-badge&color=CB3837&
+[npm-version-link]: https://www.npmjs.com/package/react-easy-code-editor
+[npm-bundle-size-badge]: https://img.shields.io/bundlephobia/minzip/react-easy-code-editor?style=for-the-badge
+[npm-bundle-size-link]: https://bundlephobia.com/package/react-easy-code-editor
+[nodejs-badge]: https://shields.io/badge/Node-black?logo=nodedotjs&logoColor=white&style=flat-square
+[nodejs-link]: https://nodejs.org/
+[react-badge]: https://shields.io/badge/React-black?logo=React&logoColor=white&style=flat-square
+[react-link]: https://react.dev/
+[typescript-badge]: https://shields.io/badge/TypeScript-black?logo=TypeScript&logoColor=FFF&style=flat-square&
+[typescript-link]: https://www.typescriptlang.org/
+[vite-badge]: https://img.shields.io/badge/vite-black?style=flat-square&logo=vite&logoColor=white&
+[vite-link]: https://vitejs.dev/
+[vitest-badge]: https://img.shields.io/badge/vitest-black?style=flat-square&logo=vitest&logoColor=white
+[vitest-link]: https://vitest.dev/

@@ -66,6 +66,7 @@
     "code",
     "editor",
     "react-easy",
-    "code-editor"
+    "code-editor",
+    "highlight"
   ]
 }

@@ -19,7 +19,7 @@ Clean up and Stability patch.
 
 ### Added
 
-- 100% unit test coverage.
+- Unit test coverage.
 - Improved examples on homepage: live preview, mini-ide, diff?, performance 
 
 ### Changed
