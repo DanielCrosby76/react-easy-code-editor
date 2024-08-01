@@ -8,39 +8,28 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
-  text-align: center;
   overflow: hidden;
-}
-
-#homepage {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
 }
 
-#container {
+#header {
   display: flex;
-  height: 100%;
-  width: 100%;
-}
-
-#editor-container {
-  width: 50%;
-}
-
-#output {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 50%;
-  height: 100%;
-  padding-top: 5%;
-  overflow-y: auto;
-  scrollbar-width: thin;
+  background-color: #2a2a2e;
+  padding: 15px;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#header-icon {
+  animation: rotating 20s linear infinite;
+  margin-right: 10px;
+}
+
+#header-text {
+  font-weight: bold;
+  font-size: large;
 }
 
 @keyframes rotating {
@@ -52,19 +41,15 @@ body {
   }
 }
 
+#demo-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
 @media only screen and (width <= 1024px) {
-  #container {
-    flex-direction: column;
-  }
-
-  #editor-container {
-    height: 50%;
-    width: 100%;
-  }
-
-  #output {
-    padding-top: 0px;
-    height: 50%;
-    width: 100%;
+  #root {
+    overflow: auto;
+    scrollbar-width: thin;
   }
 }

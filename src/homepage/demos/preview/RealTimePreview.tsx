@@ -8,6 +8,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-css";
 import "prismjs/themes/prism-dark.css";
+import "./preview.css";
 
 export default () => {
   const [code, setCode] = useState<string>(previewHTML);
@@ -24,21 +25,19 @@ export default () => {
   }, []);
 
   return (
-    <div id="homepage">
-      <div id="container">
-        <div id="editor-container">
-          <EasyCodeEditor
-            value={code}
-            onChange={handleChange}
-            highlight={handleHighlight}
-            theme={{
-              ...DefaultDark,
-              border: "none",
-            }}
-          />
-        </div>
-        <div id="output" dangerouslySetInnerHTML={{ __html: html }} />
+    <div id="real-time-preview">
+      <div id="editor-container">
+        <EasyCodeEditor
+          value={code}
+          onChange={handleChange}
+          highlight={handleHighlight}
+          theme={{
+            ...DefaultDark,
+            border: "none",
+          }}
+        />
       </div>
+      <div id="output" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };
