@@ -1,0 +1,41 @@
+#ide {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+
+#ide-buttons {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.ide-button {
+  padding: 5px;
+  margin-right: 5px;
+  background-color: #2a2a2e;
+  border: none;
+  color: aliceblue;
+  box-sizing: border-box;
+  width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#ide-input {
+  width: 100%;
+  height: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 10px;
+}
+
+#ide-output {
+  height: 50%;
+  width: 100%;
+  background-color: black;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: auto;
+  scrollbar-width: thin;
+  margin: 0px;
+}

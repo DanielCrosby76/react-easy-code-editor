@@ -1,6 +1,7 @@
 import { Dispatch, memo, SetStateAction, useState } from "react";
 import RealTime from "./demos/preview/RealTime";
 import Performance from "./demos/performance/Performance";
+import EsolangIDE from "./demos/ide/EsolangIDE";
 import "./main.css";
 
 const Header = ({ setDemo }: { setDemo: Dispatch<SetStateAction<string>> }) => {
@@ -17,8 +18,8 @@ const Header = ({ setDemo }: { setDemo: Dispatch<SetStateAction<string>> }) => {
         <option className="demo-select-option" value="Performance">
           Performance Demo
         </option>
-        <option className="demo-select-option" value="MiniIDE">
-          MiniIDE Demo
+        <option className="demo-select-option" value="EsolangIDE">
+          EsolangIDE Demo
         </option>
       </select>
     </div>
@@ -31,8 +32,8 @@ const Body = memo(({ demo }: { demo: string }) => {
       return <RealTime />;
     case "Performance":
       return <Performance />;
-    case "MiniIDE":
-      return <div>MiniIDE</div>;
+    case "EsolangIDE":
+      return <EsolangIDE />;
   }
 });
 
