@@ -1,18 +1,22 @@
 #performance {
+  width: 100%;
+  height: 600px;
+}
+
+#performance-container {
+  width: 75%;
+  margin: auto;
+  margin-top: 20px;
   display: flex;
   width: 75%;
-  height: 90%;
-  margin: auto;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 100%;
 }
-
-.token.operator {
+/* .token.operator {
   background: none;
-}
+} */
 
 @media only screen and (width <= 1024px) {
-  #performance {
+  #performance-container {
     width: 100%;
-    flex-grow: 1;
   }
 }

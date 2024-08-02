@@ -2,9 +2,9 @@ import { Theme } from "../index";
 
 const DefaultDark: Theme = {
   border: "1px solid #686868",
-  backgroundColor: "#2a2a2e",
+  backgroundColor: "#18181b",
   color: "rgb(188, 188, 188)",
-  numbersBackgroundColor: "#2a2a2e",
+  numbersBackgroundColor: "#18181b",
   numbersColor: "#686868",
   numbersBorder: "1px solid #686868",
   caretColor: "#f5f5f5",

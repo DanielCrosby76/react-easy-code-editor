@@ -3,20 +3,18 @@ body {
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
   background-color: #18181b;
   color: aliceblue;
+  overflow: auto;
 }
 
 #root {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 #header {
-  background-color: #2a2a2e;
   padding: 15px;
-  box-shadow: #61dbfb 0px 0px 2px;
+  border-bottom: 1px solid rgb(188, 188, 188);
+  /* margin-bottom: 1px; */
 }
 
 #header-container {
@@ -24,25 +22,6 @@ body {
   justify-content: space-between;
   margin: auto;
   width: 75%;
-}
-
-#demo-select {
-  box-sizing: border-box;
-  background-color: inherit;
-  color: aliceblue;
-  border: none;
-  outline: none;
-}
-
-#demo-select:hover {
-  color: #61dbfb;
-  border: none;
-  outline: none;
-}
-
-.demo-select-option {
-  background-color: #18181b;
-  color: aliceblue;
 }
 
 #header-text-container {
@@ -58,6 +37,11 @@ body {
 #header-text {
   font-weight: bold;
   font-size: large;
+}
+
+#theme {
+  display: flex;
+  align-items: center;
 }
 
 @keyframes rotating {

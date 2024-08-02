@@ -39,7 +39,7 @@ export default (props: EasyCodeEditorProps) => {
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
   const enclose = useEnclose();
-  const { border, caretColor, font, fontSize } = theme;
+  const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
 
   const visibleLineCount = useMemo(() => {
     return dynamicHighlight && inputRef.current
@@ -194,7 +194,7 @@ export default (props: EasyCodeEditorProps) => {
           onScroll={handleScroll}
           onKeyDown={handleKeyDown}
           ref={inputRef}
-          style={{ caretColor: caretColor }}
+          style={{ caretColor: caretColor, scrollbarColor: `${color} ${backgroundColor}` }}
           value={code}
           disabled={readonly}
           aria-label="React Easy Code Editor"

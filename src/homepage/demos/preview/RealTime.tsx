@@ -3,11 +3,6 @@ import EasyCodeEditor, { DefaultDark } from "../../../lib/exports";
 import previewHTML from "./previewHTML";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-markup";
-import "prismjs/components/prism-css";
-import "prismjs/themes/prism-dark.css";
 import "./preview.css";
 
 export default () => {
@@ -26,18 +21,22 @@ export default () => {
 
   return (
     <div id="real-time-preview">
-      <div id="editor-container">
-        <EasyCodeEditor
-          value={code}
-          onChange={handleChange}
-          highlight={handleHighlight}
-          theme={{
-            ...DefaultDark,
-            border: "none",
-          }}
-        />
+      <div id="real-time-preview-container">
+        <div id="editor-container">
+          <EasyCodeEditor
+            value={code}
+            onChange={handleChange}
+            highlight={handleHighlight}
+            theme={{
+              ...DefaultDark,
+              border: "none",
+              backgroundColor: "transparent",
+            }}
+            showLineNumbers={false}
+          />
+        </div>
+        <div id="output" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-      <div id="output" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };
