@@ -1,7 +1,5 @@
 # React Easy Code Editor
 
-An easy to use react based code editor component library.
-
 [![License: MIT][license-badge]][license-link]
 [![NPM Version][npm-version-badge]][npm-version-link]
 [![NPM bundle size][npm-bundle-size-badge]][npm-bundle-size-link]
