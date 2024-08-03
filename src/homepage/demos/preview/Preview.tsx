@@ -1,14 +1,17 @@
-import { useCallback, useState, useTransition } from "react";
-import EasyCodeEditor, { DefaultDark } from "../../../lib/exports";
+import { useCallback, useContext, useState, useTransition } from "react";
+import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
 import previewHTML from "./previewHTML";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import "./preview.css";
+import { ThemeContext } from "../../App";
 
 export default () => {
   const [code, setCode] = useState<string>(previewHTML);
   const [html, setHtml] = useState<string>(code);
   const [_, startTransition] = useTransition();
+  const theme = useContext(ThemeContext);
+  const currentTheme = theme === "dark" ? DefaultDark : DefaultLight;
 
   const handleChange = useCallback((code: string) => {
     setCode(code);
@@ -28,7 +31,7 @@ export default () => {
             onChange={handleChange}
             highlight={handleHighlight}
             theme={{
-              ...DefaultDark,
+              ...currentTheme,
               border: "none",
               backgroundColor: "transparent",
             }}

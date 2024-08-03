@@ -10,7 +10,7 @@ export default `<!-- Welcome to the <ReactEasyCodeEditor /> real-time demo! -->
 }
 #install {
     font-style: italic;
-    background-color: #2a2a2e;
+    background-color: var(--background-color);
     text-align: center;
     color: rgb(188, 188, 188);
     padding: 20px;

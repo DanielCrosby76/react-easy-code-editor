@@ -1,9 +1,13 @@
 #real-time-preview {
   width: 100%;
   height: 600px;
-  background: rgb(24, 24, 27);
-  background: linear-gradient(180deg, rgba(24, 24, 27, 1) 0%, rgba(32, 32, 36, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--background-color) 0%,
+    var(--background-secondary-color) 100%
+  );
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* border-bottom: 1px solid white; */
 }
 
 #real-time-preview-container {
@@ -15,7 +19,8 @@
 
 #editor-container {
   width: 50%;
-  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #output {

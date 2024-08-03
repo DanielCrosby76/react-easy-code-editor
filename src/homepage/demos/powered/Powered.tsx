@@ -1,28 +1,35 @@
+import { useContext } from "react";
 import "./powered.css";
+import { ThemeContext } from "../../App";
+import { DefaultDark, DefaultLight } from "../../../lib/exports";
 
 export default () => {
+  const theme = useContext(ThemeContext);
+  const currentTheme = theme === "dark" ? DefaultDark : DefaultLight;
+  const backgroundColor = currentTheme.backgroundColor.replace("#", "");
+  const color = theme === "dark" ? "aliceblue" : "202024"
   return (
     <div id="powered">
       <div id="powered-container">
         <img
           className="powered-container-img"
-          src={`https://shields.io/badge/Node-${"18181b"}?logo=nodedotjs&logoColor=white&style=flat-square`}
+          src={`https://shields.io/badge/Node-${backgroundColor}?logo=nodedotjs&logoColor=${color}&style=flat-square`}
         />
         <img
           className="powered-container-img"
-          src={`https://shields.io/badge/React-${"18181b"}?logo=React&logoColor=white&style=flat-square`}
+          src={`https://shields.io/badge/React-${backgroundColor}?logo=React&logoColor=${color}&style=flat-square`}
         />
         <img
           className="powered-container-img"
-          src={`https://shields.io/badge/TypeScript-${"18181b"}?logo=TypeScript&logoColor=FFF&style=flat-square`}
+          src={`https://shields.io/badge/TypeScript-${backgroundColor}?logo=TypeScript&logoColor=${color}&style=flat-square`}
         />
         <img
           className="powered-container-img"
-          src={`https://img.shields.io/badge/vite-${"18181b"}?style=flat-square&logo=vite&logoColor=white`}
+          src={`https://img.shields.io/badge/vite-${backgroundColor}?style=flat-square&logo=vite&logoColor=${color}`}
         />
         <img
           className="powered-container-img"
-          src={`https://img.shields.io/badge/vitest-${"18181b"}?style=flat-square&logo=vitest&logoColor=white`}
+          src={`https://img.shields.io/badge/vitest-${backgroundColor}?style=flat-square&logo=vitest&logoColor=${color}`}
         />
       </div>
     </div>

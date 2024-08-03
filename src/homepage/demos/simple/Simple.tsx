@@ -1,12 +1,14 @@
-import { useState } from "react";
-import EasyCodeEditor, { DefaultDark } from "../../../lib/exports";
+import { useContext, useState } from "react";
+import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import basicUsage from "./basicUsage";
 import "./simple.css";
+import { ThemeContext } from "../../App";
 
 export default () => {
   const [code, setCode] = useState(basicUsage);
+  const theme = useContext(ThemeContext);
   return (
     <div id="simple">
       <div id="simple-container">
@@ -22,7 +24,7 @@ export default () => {
             value={code}
             onChange={(code) => setCode(code)}
             highlight={(code) => highlight(code, languages.jsx)}
-            theme={DefaultDark}
+            theme={theme === "dark" ? DefaultDark : DefaultLight}
             dynamicHighlight={false}
             readonly
           />

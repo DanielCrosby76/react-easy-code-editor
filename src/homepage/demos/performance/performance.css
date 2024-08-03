@@ -16,7 +16,7 @@
 }
 
 #performance-info-p {
-  color: #bcbcbc;
+  color: var(--text-color);
   width: 90%;
 }
 

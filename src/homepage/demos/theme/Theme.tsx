@@ -1,14 +1,21 @@
-import { useState } from "react";
-import EasyCodeEditor, { DefaultDark } from "../../../lib/exports";
+import { useContext, useRef, useState } from "react";
+import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import { Theme } from "../../../lib/index";
 import "./theme.css";
+import { ThemeContext } from "../../App";
 
 export default () => {
-  const [customTheme, setCustomTheme] = useState<Theme>(DefaultDark);
+  const theme = useContext(ThemeContext);
+  const [customTheme, setCustomTheme] = useState<Theme>(
+    theme === "dark" ? DefaultDark : DefaultLight
+  );
   const [code, setCode] = useState<string>(JSON.stringify(customTheme, undefined, 4));
   const [showLineNumbers, setShowLineNumbers] = useState(false);
+  const currentTheme = theme === "dark" ? DefaultDark : DefaultLight;
+  const modified = useRef<boolean>(false);
+  if (!modified.current && currentTheme !== customTheme) setCustomTheme(currentTheme);
   return (
     <div id="theme">
       <div id="theme-container">
@@ -27,6 +34,7 @@ export default () => {
           <EasyCodeEditor
             value={code}
             onChange={(code) => {
+              modified.current = true;
               setCode(code);
               // TODO validate theme before apply
               setCustomTheme(JSON.parse(code));

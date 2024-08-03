@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import RealTime from "./demos/preview/Preview";
 import Performance from "./demos/performance/Performance";
 import Theme from "./demos/theme/Theme";
@@ -11,30 +12,43 @@ import "prismjs/components/prism-jsx";
 import "prismjs/themes/prism-dark.css";
 // import "prismjs/themes/prism.css";
 import "./main.css";
+import { DefaultDark, DefaultLight } from "../lib/exports";
 
-const Header = () => {
-  return (
-    <div id="header">
-      <div id="header-container">
-        <span id="header-text-container">
-          <img id="header-icon" src="./react.svg" alt="react"></img>
-          <span id="header-text">React Easy Code Editor</span>
-        </span>
-        <div id="theme-select">🌒</div>
-      </div>
-    </div>
-  );
-};
+export const ThemeContext = createContext("dark");
 
 export default () => {
+  const [theme, setTheme] = useState("dark");
+  const currentTheme = theme === "dark" ? DefaultDark : DefaultLight;
+  document.documentElement.style.setProperty("--background-color", currentTheme.backgroundColor);
+  document.documentElement.style.setProperty(
+    "--background-secondary-color",
+    theme === "dark" ? "#202024" : "#ececec"
+  );
+  document.documentElement.style.setProperty("--text-color", currentTheme.color);
+  document.documentElement.style.setProperty(
+    "--text-secondary-color",
+    theme === "dark" ? "aliceblue" : "#202024"
+  );
   return (
     <>
-      <Header />
-      <RealTime />
-      <Performance />
-      <Theme />
-      <Simple />
-      <Powered />
+      <div id="header">
+        <div id="header-container">
+          <span id="header-text-container">
+            <img id="header-icon" src="./react.svg" alt="react"></img>
+            <span id="header-text">React Easy Code Editor</span>
+          </span>
+          <div id="theme-select" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+            {theme === "dark" ? "🌒" : "☀️"}
+          </div>
+        </div>
+      </div>
+      <ThemeContext.Provider value={theme}>
+        <RealTime />
+        <Performance />
+        <Theme />
+        <Simple />
+        <Powered />
+      </ThemeContext.Provider>
     </>
   );
 };

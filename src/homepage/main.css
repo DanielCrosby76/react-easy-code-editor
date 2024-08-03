@@ -1,8 +1,8 @@
 body {
   margin: 0px;
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
-  background-color: #18181b;
-  color: aliceblue;
+  background-color: var(--background-color);
+  color: var(--text-secondary-color);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -14,7 +14,7 @@ body {
 
 #header {
   padding: 15px;
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid var(--text-secondary-color);
 }
 
 #header-container {
@@ -42,6 +42,7 @@ body {
 #theme-select {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 @keyframes rotating {

@@ -1,12 +1,14 @@
-import { useState } from "react";
-import EasyCodeEditor, { DefaultDark } from "../../../lib/exports";
+import { useContext, useState } from "react";
+import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
 import largeFile from "./largeFile";
+import { ThemeContext } from "../../App";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import "./performance.css";
 
 export default () => {
   const [code, setCode] = useState(largeFile);
+  const theme = useContext(ThemeContext);
   return (
     <div id="performance">
       <div id="performance-container">
@@ -30,7 +32,7 @@ export default () => {
             value={code}
             onChange={(code) => setCode(code)}
             highlight={(code) => highlight(code, languages.js)}
-            theme={DefaultDark}
+            theme={theme === "dark" ? DefaultDark : DefaultLight}
           />
         </div>
       </div>
