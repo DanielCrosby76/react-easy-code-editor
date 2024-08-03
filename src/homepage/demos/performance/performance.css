@@ -8,6 +8,7 @@
   margin: auto;
   display: flex;
   height: 100%;
+  max-width: 1500px;
 }
 
 #performance-info {

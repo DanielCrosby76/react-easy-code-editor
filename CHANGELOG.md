@@ -21,11 +21,10 @@ Clean up and Stability patch.
 ### Added
 
 - Increased unit test coverage.
-- Improved examples on homepage: live preview, theme, performance, ide?
+- Improved examples on homepage: live preview, theme, performance.
 
 ### Changed
 
-- Visible range of editor to be more consistent.
 - Theme styling to use color and background color for scrollbars.
 
 ## [1.1.0] - 2023-07-29

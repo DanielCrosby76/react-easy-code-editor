@@ -8,12 +8,13 @@
   margin: auto;
   display: flex;
   height: 100%;
+  max-width: 1500px;
 }
 
 #theme-info {
   margin: auto;
   width: 50%;
-  /* margin-left: 5%; */
+  margin-left: 5%;
 }
 
 #theme-info-p {
@@ -23,10 +24,12 @@
 
 #theme-editor {
   margin: auto;
-  width: 50%;
-  /* width: 45%; */
-  height: 190px;
-  /* height: 200px; */
+  width: 45%;
+  height: 200px;
+}
+
+#toggle-line-numbers {
+  display: flex;
 }
 
 @media only screen and (width <= 1024px) {

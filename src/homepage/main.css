@@ -22,6 +22,7 @@ body {
   justify-content: space-between;
   margin: auto;
   width: 75%;
+  max-width: 1500px;
 }
 
 #header-text-container {

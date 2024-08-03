@@ -19,17 +19,6 @@ export default () => {
   return (
     <div id="theme">
       <div id="theme-container">
-        <div id="theme-info">
-          <h1>Customizable.</h1>
-          <p id="theme-info-p">
-            Style the editor component to suit your needs or personal preferences using a simple
-            theme object.
-          </p>
-          <p id="toggle-line-numbers">
-            Line Numbers?
-            <input type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
-          </p>
-        </div>
         <div id="theme-editor">
           <EasyCodeEditor
             value={code}
@@ -43,6 +32,17 @@ export default () => {
             theme={customTheme}
             showLineNumbers={showLineNumbers}
           />
+        </div>
+        <div id="theme-info">
+          <h1>Customizable.</h1>
+          <p id="theme-info-p">
+            Style the editor component to suit your needs or personal preferences using a simple
+            theme object.
+          </p>
+          <p id="toggle-line-numbers">
+            <input type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
+            Show Line Numbers?
+          </p>
         </div>
       </div>
     </div>
