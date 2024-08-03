@@ -12,7 +12,7 @@
 
 React easy code editor is a small and simple library that aims to provide the user a much improved experience and increased performance over the popular libraries [react-simple-code-editor](https://github.com/react-simple-code-editor/react-simple-code-editor) and [react-textarea-code-editor](https://github.com/uiwjs/react-textarea-code-editor) while maintaining a small build size and concise code base. This library is for those who value usability and simplicity but do not need somthing fully featured like the [codemirror](https://github.com/codemirror/dev/) or [monaco](https://github.com/microsoft/monaco-editor) editors. Perfect for example code embeds, forms where code can be submitted, or simply as an input with line numbering.
 
-Check out the [live demos](https://danielcrosby76.github.io/react-easy-code-editor/) or install the package yourself from npm:
+Check out the [homepage](https://danielcrosby76.github.io/react-easy-code-editor/) or install the package yourself from npm:
 
 ```sh
 npm install react-easy-code-editor
@@ -127,9 +127,9 @@ const myTheme = {
 [nodejs-link]: https://nodejs.org/
 [react-badge]: https://shields.io/badge/React-black?logo=React&logoColor=white&style=flat-square
 [react-link]: https://react.dev/
-[typescript-badge]: https://shields.io/badge/TypeScript-black?logo=TypeScript&logoColor=FFF&style=flat-square&
+[typescript-badge]: https://shields.io/badge/TypeScript-black?logo=TypeScript&logoColor=FFF&style=flat-square
 [typescript-link]: https://www.typescriptlang.org/
-[vite-badge]: https://img.shields.io/badge/vite-black?style=flat-square&logo=vite&logoColor=white&
+[vite-badge]: https://img.shields.io/badge/vite-black?style=flat-square&logo=vite&logoColor=white
 [vite-link]: https://vitejs.dev/
 [vitest-badge]: https://img.shields.io/badge/vitest-black?style=flat-square&logo=vitest&logoColor=white
 [vitest-link]: https://vitest.dev/

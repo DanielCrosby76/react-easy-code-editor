@@ -34,7 +34,7 @@ export default `<!-- Welcome to the <ReactEasyCodeEditor /> real-time demo! -->
     An easy to use react based code editor component library.
 </h3>
 <p>
-    Check out the other demos, the <a class="link" href="https://github.com/DanielCrosby76/react-easy-code-editor">github</a>
+    Check out the <a class="link" href="https://github.com/DanielCrosby76/react-easy-code-editor">github</a>
     or install the package yourself:
 </p>
 <div id="install">npm i react-easy-code-editor</div>

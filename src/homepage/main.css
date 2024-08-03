@@ -3,7 +3,8 @@ body {
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
   background-color: #18181b;
   color: aliceblue;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #root {
@@ -13,8 +14,7 @@ body {
 
 #header {
   padding: 15px;
-  border-bottom: 1px solid rgb(188, 188, 188);
-  /* margin-bottom: 1px; */
+  border-bottom: 1px solid #bcbcbc;
 }
 
 #header-container {
@@ -39,7 +39,7 @@ body {
   font-size: large;
 }
 
-#theme {
+#theme-select {
   display: flex;
   align-items: center;
 }
@@ -61,5 +61,9 @@ body {
 
   #header-container {
     width: 100%;
+  }
+
+  #header {
+    margin-bottom: 1px;
   }
 }

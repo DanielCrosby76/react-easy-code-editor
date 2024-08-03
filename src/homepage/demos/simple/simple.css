@@ -1,9 +1,9 @@
-#performance {
+#simple {
   width: 100%;
   height: 600px;
 }
 
-#performance-container {
+#simple-container {
   width: 75%;
   margin: auto;
   margin-top: 20px;
@@ -12,28 +12,28 @@
   height: 100%;
 }
 
-#performance-info {
+#simple-info {
   margin: auto;
   width: 50%;
 }
 
-#performance-info-p {
+#simple-info-p {
   color: #bcbcbc;
   width: 90%;
 }
 
-.performance-link {
+.simple-link {
   color: #61dbfb;
 }
 
-#performance-editor {
+#simple-editor {
   margin: auto;
   width: 50%;
   height: 80%;
 }
 
 @media only screen and (width <= 1024px) {
-  #performance-container {
+  #simple-container {
     width: 100%;
   }
 }

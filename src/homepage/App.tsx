@@ -1,11 +1,13 @@
-import { Dispatch, memo, SetStateAction, useState } from "react";
-import RealTime from "./demos/preview/RealTime";
+import RealTime from "./demos/preview/Preview";
 import Performance from "./demos/performance/Performance";
-// import IDE from "./demos/ide/IDE";
+import Theme from "./demos/theme/Theme";
+import Simple from "./demos/simple/Simple";
+import Powered from "./demos/powered/Powered";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-css";
+import "prismjs/components/prism-jsx";
 import "prismjs/themes/prism-dark.css";
 // import "prismjs/themes/prism.css";
 import "./main.css";
@@ -18,7 +20,7 @@ const Header = () => {
           <img id="header-icon" src="./react.svg" alt="react"></img>
           <span id="header-text">React Easy Code Editor</span>
         </span>
-        <div id="theme">🌒</div>
+        <div id="theme-select">🌒</div>
       </div>
     </div>
   );
@@ -29,7 +31,10 @@ export default () => {
     <>
       <Header />
       <RealTime />
-      {/* <Performance /> */}
+      <Performance />
+      <Theme />
+      <Simple />
+      <Powered />
     </>
   );
 };
