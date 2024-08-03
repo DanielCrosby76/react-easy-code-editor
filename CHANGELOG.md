@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.0] - Planned
+## [1.2.0] - Unreleased
 
 Quality of life updates.
 
@@ -14,7 +14,7 @@ Quality of life updates.
 - Undo/Redo stack.
 - Full unit test coverage.
 
-## [1.1.1] - Unreleased
+## [1.1.1] - 2024-08-03
 
 Clean up and Stability patch.
 
@@ -27,7 +27,7 @@ Clean up and Stability patch.
 
 - Theme styling to use color and background color for scrollbars.
 
-## [1.1.0] - 2023-07-29
+## [1.1.0] - 2024-07-29
 
 Full release with full feature set.
 
@@ -36,7 +36,7 @@ Full release with full feature set.
 - Default themes to use monospace font.
 - Updated examples to use default import.
 
-## [1.1.0-rc.1] - 2023-07-29
+## [1.1.0-rc.1] - 2024-07-29
 
 Release cadididate that has feature parity with other libraries.
 
