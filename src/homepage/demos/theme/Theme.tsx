@@ -18,7 +18,7 @@ export default () => {
             Style the editor component to suit your needs or personal preferences using a simple
             theme object.
           </p>
-          <p>
+          <p id="toggle-line-numbers">
             Line Numbers?
             <input type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
           </p>

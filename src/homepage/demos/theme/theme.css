@@ -6,9 +6,7 @@
 #theme-container {
   width: 75%;
   margin: auto;
-  margin-top: 20px;
   display: flex;
-  width: 75%;
   height: 100%;
 }
 
@@ -32,7 +30,7 @@
 }
 
 @media only screen and (width <= 1024px) {
-  #theme-container {
-    width: 100%;
+  #theme {
+    display: none;
   }
 }

@@ -38,6 +38,6 @@ export default `<!-- Welcome to the <ReactEasyCodeEditor /> real-time demo! -->
     or install the package yourself:
 </p>
 <div id="install">npm i react-easy-code-editor</div>
-<p>
+<p id="edit">
     Edit the code to see changes on the page in real time.
 </p>`;

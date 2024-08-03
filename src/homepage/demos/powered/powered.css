@@ -12,19 +12,35 @@
   width: 75%;
   margin: auto;
   text-align: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .powered-container-img {
   position: relative;
   height: 40px;
+  /* width: 10%; */
 }
 
-@keyframes slides {
+@media only screen and (width <= 1024px) {
+  #powered {
+    display: none;
+  }
+
+  #powered-container {
+    width: 100%;
+  }
+
+  .powered-container-img {
+    width: 20%;
+  }
+}
+
+/* @keyframes slides {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-100%);
   }
-}
+} */

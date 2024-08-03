@@ -35,7 +35,12 @@ export default () => {
             showLineNumbers={false}
           />
         </div>
-        <div id="output" dangerouslySetInnerHTML={{ __html: html }} />
+        <div
+          id="output"
+          dangerouslySetInnerHTML={{
+            __html: `${html}<p id="desktop-site">Note: the demo code editors are only accessible on larger screens.</p>`,
+          }}
+        />
       </div>
     </div>
   );

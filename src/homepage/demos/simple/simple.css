@@ -6,9 +6,7 @@
 #simple-container {
   width: 75%;
   margin: auto;
-  margin-top: 20px;
   display: flex;
-  width: 75%;
   height: 100%;
 }
 
@@ -33,7 +31,7 @@
 }
 
 @media only screen and (width <= 1024px) {
-  #simple-container {
-    width: 100%;
+  #simple {
+    display: none;
   }
 }

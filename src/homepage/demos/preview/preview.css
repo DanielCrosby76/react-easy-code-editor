@@ -31,25 +31,33 @@
   padding: 20px;
 }
 
+#desktop-site {
+  display: none;
+}
+
 @media only screen and (width <= 1024px) {
   #real-time-preview {
-    height: 1000px;
+    height: 100%;
   }
 
   #real-time-preview-container {
     width: 100%;
-    flex-direction: column-reverse;
   }
 
   #editor-container {
-    height: 50%;
-    width: 100%;
-    padding: 0px;
+    display: none;
   }
 
   #output {
-    height: 50%;
     width: 100%;
-    padding: 0px;
+    height: 100%;
+  }
+
+  #edit {
+    display: none;
+  }
+
+  #desktop-site {
+    display: block;
   }
 }
