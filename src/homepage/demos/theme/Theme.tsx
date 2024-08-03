@@ -40,7 +40,7 @@ export default () => {
             theme object.
           </p>
           <p id="toggle-line-numbers">
-            <input type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
+            <input id="line-numbers-checkbox" type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
             Show Line Numbers?
           </p>
         </div>

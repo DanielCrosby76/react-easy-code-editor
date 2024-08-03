@@ -1,13 +1,14 @@
 {
   "name": "react-easy-code-editor",
-  "description": "An easy to use react based code editor with syntax highlighting.",
-  "version": "1.1.0",
+  "description": "An easy to use react based code editor component library.",
+  "version": "1.1.1",
   "license": "MIT",
   "author": {
     "name": "Daniel Crosby",
     "email": "danielcrosby844@gmail.com"
   },
   "type": "module",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -25,7 +26,7 @@
     "dev": "vite",
     "test": "vitest run",
     "test:ui": "vitest --ui --coverage",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && npm run test && vite build",
     "build:homepage": "tsc -b && vite build --config vite.config.homepage.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --config vite.config.homepage.ts"

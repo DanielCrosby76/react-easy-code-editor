@@ -25,11 +25,15 @@
 #theme-editor {
   margin: auto;
   width: 45%;
-  height: 200px;
+  height: 190px;
 }
 
 #toggle-line-numbers {
   display: flex;
+}
+
+#line-numbers-checkbox {
+  margin-left: 0px;
 }
 
 @media only screen and (width <= 1024px) {
