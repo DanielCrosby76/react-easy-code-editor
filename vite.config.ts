@@ -35,6 +35,7 @@ export default defineConfig({
         "src/lib/exports.tsx",
         "src/main.tsx",
         "src/lib/themes/**",
+        "src/homepage/**"
       ],
     },
   },

@@ -15,6 +15,7 @@ import EditorLineNumbers from "./EditorLineNumbers";
 import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 import useEnclose from "../hooks/useEnclose";
+import useNewLine from "../hooks/useNewLine";
 
 export default (props: EasyCodeEditorProps) => {
   const {
@@ -31,6 +32,7 @@ export default (props: EasyCodeEditorProps) => {
     showLineNumbers = true,
     theme = DefaultLight,
   } = props;
+  const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
   const [code, setCode] = useCode(value, onChange);
   const [visibleLine, setVisibleLine] = useState<number>(0);
   const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
@@ -39,7 +41,7 @@ export default (props: EasyCodeEditorProps) => {
   const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
   const enclose = useEnclose();
-  const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
+  const newLine = useNewLine();
 
   const visibleLineCount = useMemo(() => {
     return dynamicHighlight && inputRef.current
@@ -95,20 +97,23 @@ export default (props: EasyCodeEditorProps) => {
     [indent]
   );
 
-  const handleEnclose = useCallback((e: KeyboardEvent<HTMLTextAreaElement>) => {
-    const start = e.currentTarget.selectionStart;
-    const end = e.currentTarget.selectionEnd;
-    if (start === end) return;
-    e.preventDefault();
-    const value = e.currentTarget.value;
-    const enclosedCode = enclose(value, e.key, start, end);
-    setCode(enclosedCode);
-    queueMicrotask(() => {
-      if (!inputRef.current) return;
-      inputRef.current.selectionStart = start + 1;
-      inputRef.current.selectionEnd = end + 1;
-    });
-  }, []);
+  const handleEnclose = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+      if (start === end) return;
+      e.preventDefault();
+      const value = e.currentTarget.value;
+      const enclosedCode = enclose(value, e.key, start, end);
+      setCode(enclosedCode);
+      queueMicrotask(() => {
+        if (!inputRef.current) return;
+        inputRef.current.selectionStart = start + 1;
+        inputRef.current.selectionEnd = end + 1;
+      });
+    },
+    [enclose]
+  );
 
   const handleNewLine = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -117,26 +122,19 @@ export default (props: EasyCodeEditorProps) => {
       if (start !== end) return;
       e.preventDefault();
       const value = e.currentTarget.value;
-      const startLines = value.substring(0, start);
-      const startLinesSplit = startLines.split("\n");
-      const currentLine = startLinesSplit[startLinesSplit.length - 1];
-      const spacesCount = currentLine!.match(/^ +/);
-      const currentIndent = spacesCount ? spacesCount[0].length : 0;
-      const indentedLine = " ".repeat(currentIndent);
-      const indentedCode = `${startLines}\n${indentedLine}${value.substring(start)}`;
+      const [newLineNumber, indentedCode, newEnd] = newLine(value, start);
       const bottomVisibleLine = visibleLineCount + Math.floor(e.currentTarget.scrollTop / fontSize);
-      const newLine = startLinesSplit.length + 1;
-      setVisibleLine(newLine);
+      setVisibleLine(newLineNumber);
       setLineCount((indentedCode.match(/\n/g) || []).length + 1);
       setCode(indentedCode);
       queueMicrotask(() => {
         if (!inputRef.current) return;
-        inputRef.current.selectionEnd = start + indentedLine.length + 1;
-        if (newLine >= bottomVisibleLine) inputRef.current.scrollTop += fontSize;
+        inputRef.current.selectionEnd = newEnd;
+        if (newLineNumber >= bottomVisibleLine) inputRef.current.scrollTop += fontSize;
         inputRef.current.scrollLeft = 0;
       });
     },
-    [visibleLineCount, fontSize]
+    [visibleLineCount, fontSize, newLine]
   );
 
   const handleKeyDown = useCallback(
