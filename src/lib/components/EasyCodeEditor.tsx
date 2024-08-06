@@ -33,7 +33,7 @@ export default (props: EasyCodeEditorProps) => {
     theme = DefaultLight,
   } = props;
   const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
-  const [code, setCode] = useCode(value, onChange);
+  const [code, setCode, undo] = useCode(value, onChange);
   const [visibleLine, setVisibleLine] = useState<number>(0);
   const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -143,6 +143,13 @@ export default (props: EasyCodeEditorProps) => {
       if (trapTab && key === "Tab") handleTab(e);
       else if (wrapParens && /[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
       else if (autoIndent && key === "Enter") handleNewLine(e);
+      else if (e.ctrlKey && key === "z") {
+        e.preventDefault();
+        undo();
+      }
+      // else if (e.ctrlKey && key === "y") {
+      //   e.preventDefault();
+      // }
     },
     [handleTab, handleNewLine]
   );
