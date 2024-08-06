@@ -1,55 +1,19 @@
-import { useCallback, useRef, useState } from "react";
-
-type History = {
-  value: string;
-  // start: number;
-  // end: number;
-};
+import { useCallback, useState } from "react";
 
 export default (
   code: string | undefined,
   onChange: (code: string) => void
-): [string, (code: string) => void, () => void] => {
-  const historyRef = useRef<History[]>([]);
-  // const historyPointerRef = useRef<number>(0);
-  const isUndoRedo = useRef<boolean>(false);
-
+): [string, (code: string) => void] => {
   const codeIsUndefined = code === undefined;
+  const initialCode = codeIsUndefined ? "" : code;
+  const [state, setState] = useState<string>(initialCode);
 
-  const [codeState, setCodeState] = useState<string>(codeIsUndefined ? "" : code);
+  const setCodeState = useCallback((code: string) => {
+    if (codeIsUndefined) setState(code);
+    onChange(code);
+  }, []);
 
-  const updateState = useCallback(
-    (code: string) => {
-      setCodeState((state) => {
-        if (!isUndoRedo.current) historyRef.current.push({ value: state });
-        isUndoRedo.current = false;
-        return code;
-      });
-    },
-    [isUndoRedo.current]
-  );
+  if (!codeIsUndefined && code !== state) setState(code);
 
-  const setState = useCallback(
-    (code: string) => {
-      if (codeIsUndefined) updateState(code);
-      onChange(code);
-    },
-    [onChange]
-  );
-
-  if (!codeIsUndefined && code !== codeState) updateState(code);
-
-  const undo = useCallback(() => {
-    const previous = historyRef.current.pop();
-    if (!previous) return;
-    isUndoRedo.current = true;
-    const { value } = previous;
-    setState(value);
-  }, [setState]);
-
-  // const redo = useCallback(() => {
-  //   isUndoRedo.current = true;
-  // }, [updateState]);
-
-  return [codeState, setState, undo];
+  return [state, setCodeState];
 };

@@ -16,6 +16,7 @@ import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 import useEnclose from "../hooks/useEnclose";
 import useNewLine from "../hooks/useNewLine";
+import useHistory from "../hooks/useHistory";
 
 export default (props: EasyCodeEditorProps) => {
   const {
@@ -33,7 +34,8 @@ export default (props: EasyCodeEditorProps) => {
     theme = DefaultLight,
   } = props;
   const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
-  const [code, setCode, undo] = useCode(value, onChange);
+  const [code, setCode] = useCode(value, onChange);
+  const [push, undo, redo] = useHistory(code);
   const [visibleLine, setVisibleLine] = useState<number>(0);
   const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -57,6 +59,7 @@ export default (props: EasyCodeEditorProps) => {
     setLineCount((code.match(/\n/g) || []).length + 1);
     setVisibleLine(editedLine);
     setCode(code);
+    push(code, start, e.target.selectionEnd);
   }, []);
 
   const handleScroll = useCallback(
@@ -88,6 +91,7 @@ export default (props: EasyCodeEditorProps) => {
       const isShift = e.shiftKey;
       const [indentedCode, newStart, newEnd] = indent(value, start, end, isShift);
       setCode(indentedCode);
+      push(indentedCode, newStart, newEnd);
       queueMicrotask(() => {
         if (!inputRef.current) return;
         if (start !== end) inputRef.current.selectionStart = newStart;
@@ -105,11 +109,14 @@ export default (props: EasyCodeEditorProps) => {
       e.preventDefault();
       const value = e.currentTarget.value;
       const enclosedCode = enclose(value, e.key, start, end);
+      const newStart = start + 1;
+      const newEnd = end + 1;
       setCode(enclosedCode);
+      push(enclosedCode, newStart, newEnd);
       queueMicrotask(() => {
         if (!inputRef.current) return;
-        inputRef.current.selectionStart = start + 1;
-        inputRef.current.selectionEnd = end + 1;
+        inputRef.current.selectionStart = newStart;
+        inputRef.current.selectionEnd = newEnd;
       });
     },
     [enclose]
@@ -127,6 +134,7 @@ export default (props: EasyCodeEditorProps) => {
       setVisibleLine(newLineNumber);
       setLineCount((indentedCode.match(/\n/g) || []).length + 1);
       setCode(indentedCode);
+      push(indentedCode, newEnd, newEnd);
       queueMicrotask(() => {
         if (!inputRef.current) return;
         inputRef.current.selectionEnd = newEnd;
@@ -145,11 +153,29 @@ export default (props: EasyCodeEditorProps) => {
       else if (autoIndent && key === "Enter") handleNewLine(e);
       else if (e.ctrlKey && key === "z") {
         e.preventDefault();
-        undo();
+        const history = undo();
+        if (!history) return;
+        const { code, start, end } = history;
+        setCode(code);
+        queueMicrotask(() => {
+          if (inputRef.current) {
+            inputRef.current.selectionStart = start;
+            inputRef.current.selectionEnd = end;
+          }
+        });
+      } else if (e.ctrlKey && key === "y") {
+        e.preventDefault();
+        const history = redo();
+        if (!history) return;
+        const { code, start, end } = history;
+        setCode(code);
+        queueMicrotask(() => {
+          if (inputRef.current) {
+            inputRef.current.selectionStart = start;
+            inputRef.current.selectionEnd = end;
+          }
+        });
       }
-      // else if (e.ctrlKey && key === "y") {
-      //   e.preventDefault();
-      // }
     },
     [handleTab, handleNewLine]
   );
