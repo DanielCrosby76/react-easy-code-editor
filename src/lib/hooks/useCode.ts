@@ -8,10 +8,13 @@ export default (
   const initialCode = codeIsUndefined ? "" : code;
   const [state, setState] = useState<string>(initialCode);
 
-  const setCodeState = useCallback((code: string) => {
-    if (codeIsUndefined) setState(code);
-    onChange(code);
-  }, []);
+  const setCodeState = useCallback(
+    (code: string) => {
+      if (codeIsUndefined) setState(code);
+      onChange(code);
+    },
+    [codeIsUndefined]
+  );
 
   if (!codeIsUndefined && code !== state) setState(code);
 

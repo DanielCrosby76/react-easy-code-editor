@@ -12,11 +12,11 @@ import EditorDisplay from "./EditorDisplay";
 import useIndent from "../hooks/useIndent";
 import DefaultLight from "../themes/DefaultLight";
 import EditorLineNumbers from "./EditorLineNumbers";
-import { EasyCodeEditorProps } from "../index";
 import useCode from "../hooks/useCode";
 import useEnclose from "../hooks/useEnclose";
 import useNewLine from "../hooks/useNewLine";
 import useHistory from "../hooks/useHistory";
+import { EasyCodeEditorProps } from "../index";
 
 export default (props: EasyCodeEditorProps) => {
   const {
@@ -34,16 +34,18 @@ export default (props: EasyCodeEditorProps) => {
     theme = DefaultLight,
   } = props;
   const { border, caretColor, font, fontSize, color, backgroundColor } = theme;
+
   const [code, setCode] = useCode(value, onChange);
   const [push, undo, redo] = useHistory(code);
   const [visibleLine, setVisibleLine] = useState<number>(0);
   const [lineCount, setLineCount] = useState<number>(code.split("\n").length);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-  const lineNumbersRef = useRef<HTMLPreElement>(null);
-  const displayRef = useRef<HTMLDivElement>(null);
   const indent = useIndent(tabWidth);
   const enclose = useEnclose();
   const newLine = useNewLine();
+
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const lineNumbersRef = useRef<HTMLPreElement>(null);
+  const displayRef = useRef<HTMLDivElement>(null);
 
   const visibleLineCount = useMemo(() => {
     return dynamicHighlight && inputRef.current
@@ -51,16 +53,19 @@ export default (props: EasyCodeEditorProps) => {
       : -1;
   }, [inputRef.current, fontSize]);
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
-    const code = e.target.value;
-    const start = e.target.selectionStart;
-    const codeBeforeStart = code.substring(0, start);
-    const editedLine = (codeBeforeStart.match(/\n/g) || []).length;
-    setLineCount((code.match(/\n/g) || []).length + 1);
-    setVisibleLine(editedLine);
-    setCode(code);
-    push(code, start, e.target.selectionEnd);
-  }, []);
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      const code = e.target.value;
+      const start = e.target.selectionStart;
+      const codeBeforeStart = code.substring(0, start);
+      const editedLine = (codeBeforeStart.match(/\n/g) || []).length;
+      setLineCount((code.match(/\n/g) || []).length + 1);
+      setVisibleLine(editedLine);
+      setCode(code);
+      push(code, start, e.target.selectionEnd);
+    },
+    [setCode]
+  );
 
   const handleScroll = useCallback(
     (e: UIEvent<HTMLTextAreaElement>) => {
@@ -82,6 +87,14 @@ export default (props: EasyCodeEditorProps) => {
     [fontSize, visibleLineCount]
   );
 
+  const setSelection = useCallback((start?: number, end?: number) => {
+    queueMicrotask(() => {
+      if (!inputRef.current) return;
+      if (start) inputRef.current.selectionStart = start;
+      if (end) inputRef.current.selectionEnd = end;
+    });
+  }, []);
+
   const handleTab = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
       e.preventDefault();
@@ -92,13 +105,9 @@ export default (props: EasyCodeEditorProps) => {
       const [indentedCode, newStart, newEnd] = indent(value, start, end, isShift);
       setCode(indentedCode);
       push(indentedCode, newStart, newEnd);
-      queueMicrotask(() => {
-        if (!inputRef.current) return;
-        if (start !== end) inputRef.current.selectionStart = newStart;
-        inputRef.current.selectionEnd = newEnd;
-      });
+      setSelection(start !== end ? newStart : undefined, newEnd);
     },
-    [indent]
+    [indent, setCode]
   );
 
   const handleEnclose = useCallback(
@@ -113,13 +122,9 @@ export default (props: EasyCodeEditorProps) => {
       const newEnd = end + 1;
       setCode(enclosedCode);
       push(enclosedCode, newStart, newEnd);
-      queueMicrotask(() => {
-        if (!inputRef.current) return;
-        inputRef.current.selectionStart = newStart;
-        inputRef.current.selectionEnd = newEnd;
-      });
+      setSelection(newStart, newEnd);
     },
-    [enclose]
+    [enclose, setCode]
   );
 
   const handleNewLine = useCallback(
@@ -135,14 +140,38 @@ export default (props: EasyCodeEditorProps) => {
       setLineCount((indentedCode.match(/\n/g) || []).length + 1);
       setCode(indentedCode);
       push(indentedCode, newEnd, newEnd);
+      setSelection(undefined, newEnd);
       queueMicrotask(() => {
         if (!inputRef.current) return;
-        inputRef.current.selectionEnd = newEnd;
         if (newLineNumber >= bottomVisibleLine) inputRef.current.scrollTop += fontSize;
         inputRef.current.scrollLeft = 0;
       });
     },
-    [visibleLineCount, fontSize, newLine]
+    [visibleLineCount, fontSize, setCode]
+  );
+
+  const handleUndo = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      e.preventDefault();
+      const history = undo();
+      if (!history) return;
+      const { code, start, end } = history;
+      setCode(code);
+      setSelection(start, end);
+    },
+    [setCode]
+  );
+
+  const handleRedo = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      e.preventDefault();
+      const history = redo();
+      if (!history) return;
+      const { code, start, end } = history;
+      setCode(code);
+      setSelection(start, end);
+    },
+    [setCode]
   );
 
   const handleKeyDown = useCallback(
@@ -151,33 +180,10 @@ export default (props: EasyCodeEditorProps) => {
       if (trapTab && key === "Tab") handleTab(e);
       else if (wrapParens && /[\[\]{}()<>\"'`]/g.test(key)) handleEnclose(e);
       else if (autoIndent && key === "Enter") handleNewLine(e);
-      else if (e.ctrlKey && key === "z") {
-        e.preventDefault();
-        const history = undo();
-        if (!history) return;
-        const { code, start, end } = history;
-        setCode(code);
-        queueMicrotask(() => {
-          if (inputRef.current) {
-            inputRef.current.selectionStart = start;
-            inputRef.current.selectionEnd = end;
-          }
-        });
-      } else if (e.ctrlKey && key === "y") {
-        e.preventDefault();
-        const history = redo();
-        if (!history) return;
-        const { code, start, end } = history;
-        setCode(code);
-        queueMicrotask(() => {
-          if (inputRef.current) {
-            inputRef.current.selectionStart = start;
-            inputRef.current.selectionEnd = end;
-          }
-        });
-      }
+      else if (e.ctrlKey && key === "z") handleUndo(e);
+      else if (e.ctrlKey && key === "y") handleRedo(e);
     },
-    [handleTab, handleNewLine]
+    [handleTab, handleEnclose, handleNewLine, handleUndo, handleRedo]
   );
 
   useEffect(() => {

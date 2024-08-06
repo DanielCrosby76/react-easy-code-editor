@@ -27,5 +27,5 @@ export default () => {
     if (!pair) return code;
     const [startTag, endTag] = pair;
     return insertChar(insertChar(code, endTag, end), startTag, start);
-  }, [insertChar, pairs]);
+  }, []);
 };

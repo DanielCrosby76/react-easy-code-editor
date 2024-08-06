@@ -17,13 +17,6 @@ export default (
     { code: initialCode, start: initialCode.length, end: initialCode.length },
   ]);
   const historyPointerRef = useRef<number>(historyRef.current.length - 1);
-  // const isUndoRedo = useRef<boolean>(false);
-
-  // if (!isUndoRedo.current) {
-  //   const history = { code, start, end };
-  //   historyRef.current[++historyPointerRef.current] = history;
-  // }
-  // isUndoRedo.current = false;
 
   const push = useCallback((code: string, start: number, end: number) => {
     const history = { code, start, end };
@@ -39,9 +32,6 @@ export default (
   const redo = useCallback((): History | undefined => {
     const history = historyRef.current[++historyPointerRef.current];
     if (!history) historyPointerRef.current--;
-    //   const { value, end } = history;
-    //   isUndoRedo.current = true;
-    //   setState(value, end);
     return history;
   }, []);
 

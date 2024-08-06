@@ -54,7 +54,7 @@ export default (tabWidth: number) => {
       });
       return [[...startSlice, ...indentSlice, ...endSlice].join("\n"), newStart, newEnd];
     },
-    [tabWidth, getBlocks]
+    [tabWidth]
   );
 
   const outdentBlock = useCallback(
@@ -73,7 +73,7 @@ export default (tabWidth: number) => {
       });
       return [[...startSlice, ...indentSlice, ...endSlice].join("\n"), newStart, newEnd];
     },
-    [tabWidth, getBlocks]
+    [tabWidth]
   );
 
   return useCallback(
