@@ -33,6 +33,8 @@ npm install react-easy-code-editor
 See the [examples](examples/) folder for more.
 
 ```jsx
+"use client"; // If used with Next.js
+
 import { useState } from "react";
 import EasyCodeEditor from "react-easy-code-editor";
 
