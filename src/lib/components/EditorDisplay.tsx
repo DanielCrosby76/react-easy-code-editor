@@ -8,15 +8,14 @@ type EditorDisplayProps = {
   highlight: (code: string) => string | JSX.Element | JSX.Element[];
   visibleLine: number;
   visibleLineCount: number;
-  fontSize: number;
   scrollWidth: number;
   theme: Theme;
 };
 
 export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
-  const { code, highlight, visibleLine, visibleLineCount, fontSize, scrollWidth, theme } = props;
+  const { code, highlight, visibleLine, visibleLineCount, scrollWidth, theme } = props;
   const highlightRange = useHighlightRange(highlight, visibleLine, visibleLineCount);
-  const { backgroundColor, color } = theme;
+  const { backgroundColor, color, fontSize } = theme;
 
   const lines = code.split("\n");
   const lineCount = lines.length;

@@ -245,7 +245,6 @@ export default (props: EasyCodeEditorProps) => {
           highlight={highlight}
           visibleLine={visibleLine}
           visibleLineCount={visibleLineCount}
-          fontSize={fontSize}
           scrollWidth={inputRef.current?.scrollWidth || 0}
           theme={theme}
         />
