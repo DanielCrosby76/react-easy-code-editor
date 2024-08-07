@@ -1,25 +1,22 @@
 import { useContext, useRef, useState } from "react";
-import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
+import EasyCodeEditor from "../../lib/exports";
+import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
-import { Theme } from "../../../lib/index";
-import "./theme.css";
-import { ThemeContext } from "../../App";
+import styles from "../css/ThemeEditor.module.css";
+import { Theme } from "../../lib";
 
 export default () => {
-  const theme = useContext(ThemeContext);
-  const [customTheme, setCustomTheme] = useState<Theme>(
-    theme === "dark" ? DefaultDark : DefaultLight
-  );
+  const { theme } = useContext(ThemeContext)!;
+  const [customTheme, setCustomTheme] = useState<Theme>(theme);
   const [code, setCode] = useState<string>(JSON.stringify(customTheme, undefined, 4));
   const [showLineNumbers, setShowLineNumbers] = useState(false);
-  const currentTheme = theme === "dark" ? DefaultDark : DefaultLight;
   const modified = useRef<boolean>(false);
-  if (!modified.current && currentTheme !== customTheme) setCustomTheme(currentTheme);
+  if (!modified.current && theme !== customTheme) setCustomTheme(theme);
   return (
-    <div id="theme">
-      <div id="theme-container">
-        <div id="theme-editor">
+    <div className={styles.theme}>
+      <div className={styles.themeContainer}>
+        <div className={styles.themeEditor}>
           <EasyCodeEditor
             value={code}
             onChange={(code) => {
@@ -33,14 +30,18 @@ export default () => {
             showLineNumbers={showLineNumbers}
           />
         </div>
-        <div id="theme-info">
+        <div className={styles.themeInfo}>
           <h1>Customizable.</h1>
-          <p id="theme-info-p">
+          <p className={styles.themeInfoP}>
             Style the editor component to suit your needs or personal preferences using a simple
             theme object.
           </p>
-          <p id="toggle-line-numbers">
-            <input id="line-numbers-checkbox" type="checkbox" onChange={() => setShowLineNumbers(!showLineNumbers)} />
+          <p className={styles.toggleLineNumbers}>
+            <input
+              className={styles.lineNumbersCheckbox}
+              type="checkbox"
+              onChange={() => setShowLineNumbers(!showLineNumbers)}
+            />
             Show Line Numbers?
           </p>
         </div>

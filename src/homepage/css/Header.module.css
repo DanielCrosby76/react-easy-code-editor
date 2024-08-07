@@ -1,0 +1,53 @@
+.header {
+  padding: 15px;
+  border-bottom: 1px solid var(--text-secondary-color);
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 75%;
+  max-width: 1500px;
+}
+
+.headerTextContainer {
+  display: flex;
+  align-items: center;
+}
+
+.headerIcon {
+  animation: rotating 20s linear infinite;
+  margin-right: 10px;
+}
+
+.headerText {
+  font-weight: bold;
+  font-size: large;
+}
+
+.themeSelect {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (width <= 1024px) {
+  .header {
+    margin-bottom: 1px;
+  }
+
+  .headerContainer {
+    width: 100%;
+  }
+}

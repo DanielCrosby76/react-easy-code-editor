@@ -12,40 +12,6 @@ body {
   height: 100vh;
 }
 
-#header {
-  padding: 15px;
-  border-bottom: 1px solid var(--text-secondary-color);
-}
-
-#header-container {
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
-  width: 75%;
-  max-width: 1500px;
-}
-
-#header-text-container {
-  display: flex;
-  align-items: center;
-}
-
-#header-icon {
-  animation: rotating 20s linear infinite;
-  margin-right: 10px;
-}
-
-#header-text {
-  font-weight: bold;
-  font-size: large;
-}
-
-#theme-select {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
 @keyframes rotating {
   from {
     transform: rotate(0deg);
@@ -59,13 +25,5 @@ body {
   #root {
     overflow: auto;
     scrollbar-width: thin;
-  }
-
-  #header-container {
-    width: 100%;
-  }
-
-  #header {
-    margin-bottom: 1px;
   }
 }

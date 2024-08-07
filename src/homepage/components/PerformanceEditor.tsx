@@ -1,38 +1,38 @@
 import { useContext, useState } from "react";
-import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
-import largeFile from "./largeFile";
-import { ThemeContext } from "../../App";
+import EasyCodeEditor from "../../lib/exports";
+import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
-import "./performance.css";
+import largeFile from "../data/largeFile";
+import styles from "../css/PerformanceEditor.module.css";
 
 export default () => {
   const [code, setCode] = useState(largeFile);
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)!;
   return (
-    <div id="performance">
-      <div id="performance-container">
-        <div id="performance-info">
+    <div className={styles.performance}>
+      <div className={styles.performanceContainer}>
+        <div className={styles.performanceInfo}>
           <h1>Performance First.</h1>
-          <p id="performance-info-p">
+          <p className={styles.performanceInfoP}>
             Highlight thousands of code lines efficiently, using some of your favourite libraries
             such as{" "}
-            <a className="performance-link" href="https://prismjs.com/">
+            <a className={styles.performanceLink} href="https://prismjs.com/">
               prism.js
             </a>
             ,{" "}
-            <a className="performance-link" href="https://highlightjs.org/">
+            <a className={styles.performanceLink} href="https://highlightjs.org/">
               highlight.js
             </a>{" "}
             or through a custom function.
           </p>
         </div>
-        <div id="performance-editor">
+        <div className={styles.performanceEditor}>
           <EasyCodeEditor
             value={code}
             onChange={(code) => setCode(code)}
             highlight={(code) => highlight(code, languages.js)}
-            theme={theme === "dark" ? DefaultDark : DefaultLight}
+            theme={theme}
           />
         </div>
       </div>

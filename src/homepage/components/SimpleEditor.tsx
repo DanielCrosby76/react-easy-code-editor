@@ -1,30 +1,30 @@
 import { useContext, useState } from "react";
-import EasyCodeEditor, { DefaultDark, DefaultLight } from "../../../lib/exports";
+import EasyCodeEditor from "../../lib/exports";
+import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
-import basicUsage from "./basicUsage";
-import "./simple.css";
-import { ThemeContext } from "../../App";
+import basicUsage from "../data/basicUsage";
+import styles from "../css/SimpleEditor.module.css";
 
 export default () => {
   const [code, setCode] = useState(basicUsage);
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)!;
   return (
-    <div id="simple">
-      <div id="simple-container">
-        <div id="simple-info">
+    <div className={styles.simple}>
+      <div className={styles.simpleContainer}>
+        <div className={styles.simpleInfo}>
           <h1>Simple.</h1>
-          <p id="simple-info-p">
+          <p className={styles.simpleInfoP}>
             Ready to use out of the box. Perfect for example code embeds, forms where code can be
             submitted, or simply as an input with line numbering.
           </p>
         </div>
-        <div id="simple-editor">
+        <div className={styles.simpleEditor}>
           <EasyCodeEditor
             value={code}
             onChange={(code) => setCode(code)}
             highlight={(code) => highlight(code, languages.jsx)}
-            theme={theme === "dark" ? DefaultDark : DefaultLight}
+            theme={theme}
             dynamicHighlight={false}
             readonly
           />

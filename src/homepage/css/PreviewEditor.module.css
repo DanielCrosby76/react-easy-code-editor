@@ -1,4 +1,4 @@
-#real-time-preview {
+.realTimePreview {
   width: 100%;
   height: 600px;
   background: linear-gradient(
@@ -9,7 +9,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-#real-time-preview-container {
+.realTimePreviewContainer {
   margin: auto;
   display: flex;
   width: 75%;
@@ -17,13 +17,13 @@
   max-width: 1500px;
 }
 
-#editor-container {
+.editorContainer {
   width: 50%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-#output {
+.output {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -36,33 +36,21 @@
   padding: 20px;
 }
 
-#desktop-site {
-  display: none;
-}
-
 @media only screen and (width <= 1024px) {
-  #real-time-preview {
+  .realTimePreview {
     height: 100%;
   }
 
-  #real-time-preview-container {
+  .realTimePreviewContainer {
     width: 100%;
   }
 
-  #editor-container {
+  .editorContainer {
     display: none;
   }
 
-  #output {
+  .output {
     width: 100%;
     height: 100%;
-  }
-
-  #edit {
-    display: none;
-  }
-
-  #desktop-site {
-    display: block;
   }
 }

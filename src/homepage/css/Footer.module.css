@@ -1,9 +1,9 @@
-#powered {
+.footer {
   width: 100%;
   border-top: 1px solid var(--text-secondary-color);
 }
 
-#powered-container {
+.footerContainer {
   display: flex;
   justify-content: space-between;
   width: 75%;
@@ -14,31 +14,21 @@
   max-width: 1500px;
 }
 
-.powered-container-img {
+.footerContainerImg {
   position: relative;
   height: 40px;
-  /* width: 10%; */
 }
 
 @media only screen and (width <= 1024px) {
-  #powered {
+  .footer {
     display: none;
   }
 
-  #powered-container {
+  .footerContainer {
     width: 100%;
   }
 
-  .powered-container-img {
+  .footerContainerImg {
     width: 20%;
   }
 }
-
-/* @keyframes slides {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-} */
