@@ -1,4 +1,5 @@
 import { forwardRef, RefObject, memo } from "react";
+import styles from "../styles/EditorLineNumbers.module.css";
 import { Theme } from "../index";
 
 type EditorLineNumbersProps = {
@@ -13,7 +14,7 @@ export default memo(
     if (!showLineNumbers) return;
     return (
       <pre
-        className="easy-editor-line-numbers"
+        className={styles.editorLineNumbers}
         ref={ref as RefObject<HTMLPreElement>}
         style={{
           fontSize: theme.fontSize,

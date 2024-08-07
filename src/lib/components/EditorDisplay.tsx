@@ -1,5 +1,6 @@
 import { forwardRef, RefObject, useMemo } from "react";
 import useHighlightRange from "../hooks/useHighlightRange";
+import styles from "../styles/EditorDisplay.module.css";
 import { Theme } from "../index";
 
 type EditorDisplayProps = {
@@ -27,15 +28,15 @@ export default forwardRef<HTMLDivElement, EditorDisplayProps>((props, ref) => {
   return (
     <div
       ref={ref as RefObject<HTMLDivElement>}
-      className="easy-editor-display"
+      className={styles.editorDisplay}
       style={{
         backgroundColor,
       }}
       aria-hidden={true}
     >
-      <pre className="easy-editor-display-pre" style={{ height: codeHeight }}>
+      <pre className={styles.editorDisplayPre} style={{ height: codeHeight }}>
         <code
-          className="easy-editor-display-code"
+          className={styles.editorDisplayCode}
           style={{
             width: scrollWidth + fontSize,
             color,

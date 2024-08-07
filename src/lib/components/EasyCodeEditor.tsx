@@ -16,6 +16,7 @@ import useCode from "../hooks/useCode";
 import useEnclose from "../hooks/useEnclose";
 import useNewLine from "../hooks/useNewLine";
 import useHistory from "../hooks/useHistory";
+import styles from "../styles/EasyCodeEditor.module.css";
 import { EasyCodeEditorProps } from "../index";
 
 export default (props: EasyCodeEditorProps) => {
@@ -205,7 +206,7 @@ export default (props: EasyCodeEditorProps) => {
 
   return (
     <div
-      className="easy-editor"
+      className={styles.easyCodeEditor}
       style={{
         border,
         font,
@@ -219,9 +220,9 @@ export default (props: EasyCodeEditorProps) => {
         theme={theme}
         ref={lineNumbersRef}
       />
-      <div className="editor-container">
+      <div className={styles.easyCodeEditorContainer}>
         <textarea
-          className="easy-editor-input"
+          className={styles.easyCodeEditorInput}
           wrap="off"
           autoCapitalize="off"
           autoComplete="off"

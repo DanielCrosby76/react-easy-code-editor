@@ -22,8 +22,13 @@ export default () => {
             onChange={(code) => {
               modified.current = true;
               setCode(code);
-              // TODO validate theme before apply
-              setCustomTheme(JSON.parse(code));
+              try {
+                const customTheme = JSON.parse(code);
+                // TODO validate theme before apply
+                setCustomTheme(customTheme);
+              } catch (error) {
+                console.log("Invalid Theme");
+              }
             }}
             highlight={(code) => highlight(code, languages.js)}
             theme={customTheme}

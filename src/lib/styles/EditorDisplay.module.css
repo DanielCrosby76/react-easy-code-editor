@@ -1,0 +1,30 @@
+.editorDisplay {
+  position: absolute;
+  outline: none;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+  padding: 5px;
+  font: inherit;
+  line-height: inherit;
+}
+
+.editorDisplayPre {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0px;
+  line-height: inherit;
+  font: inherit;
+  line-height: inherit;
+}
+
+.editorDisplayCode {
+  position: absolute;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0px;
+  font: inherit;
+  line-height: inherit;
+}
