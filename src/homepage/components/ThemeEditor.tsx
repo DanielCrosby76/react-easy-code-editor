@@ -3,7 +3,7 @@ import EasyCodeEditor from "../../lib/exports";
 import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
-import styles from "../css/ThemeEditor.module.css";
+import styles from "../styles/ThemeEditor.module.css";
 import { Theme } from "../../lib";
 
 export default () => {

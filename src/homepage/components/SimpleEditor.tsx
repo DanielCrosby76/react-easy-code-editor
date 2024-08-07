@@ -4,7 +4,7 @@ import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import basicUsage from "../data/basicUsage";
-import styles from "../css/SimpleEditor.module.css";
+import styles from "../styles/SimpleEditor.module.css";
 
 export default () => {
   const [code, setCode] = useState(basicUsage);

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../ThemeProvider";
-import styles from "../css/Footer.module.css";
+import styles from "../styles/Footer.module.css";
 
 export default () => {
   const { theme, themeName } = useContext(ThemeContext)!;

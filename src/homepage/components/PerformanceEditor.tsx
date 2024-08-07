@@ -4,7 +4,7 @@ import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import largeFile from "../data/largeFile";
-import styles from "../css/PerformanceEditor.module.css";
+import styles from "../styles/PerformanceEditor.module.css";
 
 export default () => {
   const [code, setCode] = useState(largeFile);

@@ -4,7 +4,7 @@ import { ThemeContext } from "../ThemeProvider";
 // @ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import previewHTML from "../data/previewHTML";
-import styles from "../css/PreviewEditor.module.css";
+import styles from "../styles/PreviewEditor.module.css";
 
 export default () => {
   const [code, setCode] = useState<string>(previewHTML);

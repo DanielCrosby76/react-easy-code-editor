@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../ThemeProvider";
-import styles from "../css/Header.module.css";
+import styles from "../styles/Header.module.css";
 
 export default () => {
   const { themeName, switchTheme } = useContext(ThemeContext)!;
