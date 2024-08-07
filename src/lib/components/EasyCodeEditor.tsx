@@ -158,6 +158,7 @@ export default (props: EasyCodeEditorProps) => {
       if (!history) return;
       const { code, start, end } = history;
       setCode(code);
+      setLineCount((code.match(/\n/g) || []).length + 1);
       setSelection(start, end);
     },
     [setCode]
@@ -170,6 +171,7 @@ export default (props: EasyCodeEditorProps) => {
       if (!history) return;
       const { code, start, end } = history;
       setCode(code);
+      setLineCount((code.match(/\n/g) || []).length + 1);
       setSelection(start, end);
     },
     [setCode]

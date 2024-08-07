@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 React 19 update.
 
-## [1.2.0] - Unreleased
+## [1.2.0] - 07/08/2024
 
 Quality of life updates.
 

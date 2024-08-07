@@ -29,7 +29,7 @@ export default `<!-- Welcome to the <ReactEasyCodeEditor /> real-time demo! -->
 <h1>
     React Easy Code Editor
 </h1>
-<a class="link" href="https://www.npmjs.com/package/react-easy-code-editor">v1.1.1</a>
+<a class="link" href="https://www.npmjs.com/package/react-easy-code-editor">v1.2.0</a>
 <h3 id="description">
     An easy to use react based code editor component library.
 </h3>
